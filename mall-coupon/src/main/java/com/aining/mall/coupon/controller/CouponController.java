@@ -26,7 +26,7 @@ import com.aining.common.utils.R;
  * @email aininglai@outlook.com
  * @date 2022-10-17 16:30:38
  */
-@RefreshScope
+@RefreshScope  // 刷新配置
 @RestController
 @RequestMapping("coupon/coupon")
 public class CouponController {

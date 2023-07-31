@@ -85,7 +85,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
 
         // catelogId == 0查询所有,catelogId != 0则需要对wrapper添加条件
         if(catelogId != 0){
-            wrapper.eq("catelog_Id", catelogId);
+            wrapper.eq("catelog_id", catelogId);
         }
         // 模糊查询
         if (StringUtils.isNotBlank(key)) {

@@ -3,7 +3,10 @@ package com.aining.mall.product.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import com.aining.mall.product.entity.BrandEntity;
+import com.aining.mall.product.vo.BrandVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,16 +30,6 @@ public class CategoryBrandRelationController {
     @Autowired
     private CategoryBrandRelationService categoryBrandRelationService;
 
-//    /**
-//     * 列表
-//     */
-//    @RequestMapping("/list")
-//    public R list(@RequestParam Map<String, Object> params){
-//        PageUtils page = categoryBrandRelationService.queryPage(params);
-//
-//        return R.ok().put("page", page);
-//    }
-
     /**
      * 获取当前brand关联的category list
      */
@@ -46,6 +39,24 @@ public class CategoryBrandRelationController {
         List<CategoryBrandRelationEntity> data = categoryBrandRelationService.queryCatelogList(brandId);
 
         return R.ok().put("data", data);
+    }
+
+    /**
+     * 获取category关联的brand
+     */
+    @GetMapping("/brands/list")
+    public R relationBrandList(@RequestParam(value = "catId") Long catId){
+        // 调用service处理前端数据
+        List<BrandEntity> brandEntities = categoryBrandRelationService.getBrandsByCatId(catId);
+        // 对service返回的数据进行封装，并返回给前端
+        List<BrandVo> brandVos = brandEntities.stream().map((brandEntity) -> {
+            BrandVo brandVo = new BrandVo();
+            // 因为brandVo中的属性名(brandName)和brandEntity中的属性名(name)不同，不能直接用拷贝，只能用set方法设置Vo中的属性值
+            brandVo.setBrandId(brandEntity.getBrandId());
+            brandVo.setBrandName(brandEntity.getName());
+            return brandVo;
+        }).collect(Collectors.toList());
+        return R.ok().put("data", brandVos);
     }
 
 

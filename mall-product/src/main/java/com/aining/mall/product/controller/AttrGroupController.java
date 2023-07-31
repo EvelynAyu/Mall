@@ -9,8 +9,7 @@ import com.aining.mall.product.service.AttrAttrgroupRelationService;
 import com.aining.mall.product.service.AttrService;
 import com.aining.mall.product.service.CategoryService;
 import com.aining.mall.product.vo.AttrGroupRelationVo;
-import com.aining.mall.product.vo.AttrVo;
-import org.apache.ibatis.annotations.Param;
+import com.aining.mall.product.vo.AttrGroupWithAttrsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -85,6 +84,15 @@ public class AttrGroupController {
                                  @RequestParam Map<String, Object> params){
         PageUtils page = attrService.getNoRelationAttr(params, attrgroupId);
         return R.ok().put("page", page);
+    }
+
+    /**
+     * 获取当前分类下所有的属性分组和分组中的属性
+     */
+    @GetMapping("/{catelogId}/withattr")
+    public R getAttrGroupWithAttr(@PathVariable("catelogId") Long catelogId){
+        List<AttrGroupWithAttrsVo> attrGroupWithAttrsVos = attrGroupService.getAttrGroupWithattrsByCatelogId(catelogId);
+        return R.ok().put("data", attrGroupWithAttrsVos);
     }
 
     /**

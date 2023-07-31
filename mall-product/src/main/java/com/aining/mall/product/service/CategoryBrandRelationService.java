@@ -1,5 +1,6 @@
 package com.aining.mall.product.service;
 
+import com.aining.mall.product.entity.BrandEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.aining.common.utils.PageUtils;
 import com.aining.mall.product.entity.CategoryBrandRelationEntity;
@@ -25,5 +26,7 @@ public interface CategoryBrandRelationService extends IService<CategoryBrandRela
     void updateBrand(Long brandId, String name);
 
     void updateCategory(Long catId, String name);
+
+    List<BrandEntity> getBrandsByCatId(Long catId);
 }
 

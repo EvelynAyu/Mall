@@ -5,13 +5,23 @@ spring:
     url: jdbc:mysql://192.168.32.10:3306/mall_pms
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-#    配置Nacos注册中心的地址
+  #    配置Nacos注册中心的地址
   cloud:
     nacos:
       discovery:
         server-addr: 192.168.32.10:8848
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 20000
+            readTimeout: 20000
+
   application:
     name: mall-product
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 
 
 mybatis-plus:

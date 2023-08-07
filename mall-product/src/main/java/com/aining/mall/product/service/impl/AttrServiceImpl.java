@@ -4,9 +4,7 @@ import com.aining.common.constant.ProductConstant;
 import com.aining.mall.product.dao.AttrAttrgroupRelationDao;
 import com.aining.mall.product.dao.AttrGroupDao;
 import com.aining.mall.product.dao.CategoryDao;
-import com.aining.mall.product.entity.AttrAttrgroupRelationEntity;
-import com.aining.mall.product.entity.AttrGroupEntity;
-import com.aining.mall.product.entity.CategoryEntity;
+import com.aining.mall.product.entity.*;
 import com.aining.mall.product.service.CategoryService;
 import com.aining.mall.product.vo.AttrRespVo;
 import com.aining.mall.product.vo.AttrVo;
@@ -28,7 +26,6 @@ import com.aining.common.utils.PageUtils;
 import com.aining.common.utils.Query;
 
 import com.aining.mall.product.dao.AttrDao;
-import com.aining.mall.product.entity.AttrEntity;
 import com.aining.mall.product.service.AttrService;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -282,4 +279,6 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         IPage<AttrEntity> page = this.page(new Query<AttrEntity>().getPage(params), wrapper);
         return new PageUtils(page);
     }
+
+
 }

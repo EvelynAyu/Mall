@@ -1,5 +1,6 @@
 package com.aining.mall.product.service;
 
+import com.aining.mall.product.entity.ProductAttrValueEntity;
 import com.aining.mall.product.vo.AttrRespVo;
 import com.aining.mall.product.vo.AttrVo;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -32,5 +33,6 @@ public interface AttrService extends IService<AttrEntity> {
     List<AttrEntity> getRelationAttr(Long attrgroupId);
 
     PageUtils getNoRelationAttr(Map<String, Object> params, Long attrgroupId);
+
 }
 

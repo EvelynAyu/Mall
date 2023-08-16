@@ -1,4 +1,4 @@
-package com.aining.mall.product.controller;
+package com.aining.mall.product.app;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -66,6 +66,15 @@ public class SpuInfoController {
     public R update(@RequestBody SpuInfoEntity spuInfo){
 		spuInfoService.updateById(spuInfo);
 
+        return R.ok();
+    }
+
+    /**
+     * 商品上架
+     */
+    @PostMapping("/{spuId}/up")
+    public R spuUp(@PathVariable("spuId") Long spuId){
+        spuInfoService.up(spuId);
         return R.ok();
     }
 

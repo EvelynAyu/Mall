@@ -1,4 +1,4 @@
-package com.aining.mall.product.controller;
+package com.aining.mall.product.app;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,6 @@ import com.aining.mall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.aining.mall.product.entity.AttrEntity;
 import com.aining.mall.product.service.AttrService;
 import com.aining.common.utils.PageUtils;
 import com.aining.common.utils.R;

@@ -1,14 +1,12 @@
 package com.aining.mall.ware.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.aining.mall.ware.vo.SkuHasStockVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.aining.mall.ware.entity.WareSkuEntity;
 import com.aining.mall.ware.service.WareSkuService;
@@ -79,6 +77,17 @@ public class WareSkuController {
 		wareSkuService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+    /**
+     * 远程调用：查询sku是否有库存
+     */
+    @PostMapping("/hasStock")
+    public R getSkusStock(@RequestBody List<Long> skuIds){
+        // 返回当前skuId和库存量
+        List<SkuHasStockVo> hasStockVos = wareSkuService.getSkusHasStock(skuIds);
+
+        return R.ok().setData(hasStockVos);
     }
 
 }

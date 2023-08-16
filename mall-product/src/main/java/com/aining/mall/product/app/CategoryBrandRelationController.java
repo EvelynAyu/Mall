@@ -1,8 +1,7 @@
-package com.aining.mall.product.controller;
+package com.aining.mall.product.app;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.aining.mall.product.entity.BrandEntity;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.aining.mall.product.entity.CategoryBrandRelationEntity;
 import com.aining.mall.product.service.CategoryBrandRelationService;
-import com.aining.common.utils.PageUtils;
 import com.aining.common.utils.R;
 
 

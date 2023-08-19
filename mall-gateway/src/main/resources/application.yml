@@ -58,5 +58,14 @@ spring:
             - RewritePath=/api/(?<segment>.*), /renren-fast/$\{segment}
 #            意思是将/api重写成/renren-fast
 
+        - id: mall_host_route
+          uri: lb://mall-product
+          predicates:
+            - Host=mall.com
+
+        - id: mall_search_route
+          uri: lb://mall-search
+          predicates:
+            - Host=search.mall.com
 
 

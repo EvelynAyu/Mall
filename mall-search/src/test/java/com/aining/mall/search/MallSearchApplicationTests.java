@@ -46,4 +46,23 @@ public class MallSearchApplicationTests {
         System.out.println(searchResponse.toString());
     }
 
+    @Test
+    public void splitTest(){
+        String s = "_600";
+        String[] s1 = s.split("_");
+        System.out.println("长度"+s1.length);
+        System.out.println(s1[0] + "+" + s1[s1.length - 1]);
+
+        String s2 = "300_500";
+        s1 = s2.split("_");
+        System.out.println("长度"+s1.length);
+        System.out.println(s1[0] + "+" + s1[s1.length - 1]);
+
+
+        String s3 = "500_";
+        s1 = s3.split("_");
+        System.out.println("长度"+s1.length);
+        System.out.println(s1[0] + "+" + s1[s1.length - 1]);
+    }
+
 }

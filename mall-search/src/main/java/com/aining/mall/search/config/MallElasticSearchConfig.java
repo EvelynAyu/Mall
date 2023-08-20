@@ -20,6 +20,7 @@ public class MallElasticSearchConfig {
      * 通用设置项
      */
     public static final RequestOptions COMMON_OPTIONS;
+
     static {
         RequestOptions.Builder builder = RequestOptions.DEFAULT.toBuilder();
 //        builder.addHeader("Authorization", "Bearer " + TOKEN);

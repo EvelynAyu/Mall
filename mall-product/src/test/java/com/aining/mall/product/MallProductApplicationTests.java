@@ -1,8 +1,12 @@
 package com.aining.mall.product;
 
+import com.aining.mall.product.dao.AttrGroupDao;
+import com.aining.mall.product.dao.SkuSaleAttrValueDao;
 import com.aining.mall.product.entity.BrandEntity;
 import com.aining.mall.product.service.BrandService;
 import com.aining.mall.product.service.CategoryService;
+import com.aining.mall.product.vo.voForItem.SkuItemSaleAttrVo;
+import com.aining.mall.product.vo.voForItem.SpuItemAttrGroupVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -15,6 +19,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -39,6 +44,12 @@ public class MallProductApplicationTests {
 
     @Autowired
     RedissonClient redissonClient;
+
+    @Resource
+    private SkuSaleAttrValueDao skuSaleAttrValueDao;
+
+    @Resource
+    private AttrGroupDao attrGroupDao;
 
     @Test
     public void contextLoads() {
@@ -74,6 +85,12 @@ public class MallProductApplicationTests {
     public void redissonTest(){
         System.out.println(redissonClient);
 
+    }
+
+    @Test
+    public void test() {
+        List<SpuItemAttrGroupVo> attrGroupWithAttrsBySpuId = attrGroupDao.getAttrGroupWithAttrsBySpuId(11L, 225L);
+        attrGroupWithAttrsBySpuId.forEach(System.out::println);
     }
 
 

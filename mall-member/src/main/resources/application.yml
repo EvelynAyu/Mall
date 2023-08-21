@@ -19,3 +19,8 @@ mybatis-plus:
 
 server:
   port: 8000
+
+logging:
+  level:
+    com.aining.mall: debug
+

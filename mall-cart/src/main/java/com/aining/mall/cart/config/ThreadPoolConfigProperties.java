@@ -1,8 +1,7 @@
-package com.aining.mall.product.config;
+package com.aining.mall.cart.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-
 
 @ConfigurationProperties(prefix = "mall.thread")
 // @Component

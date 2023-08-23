@@ -57,8 +57,15 @@
 							</li>
 						</ul>
 						<ul class="header_ul_right">
-							<li style="border: 0;"><a href="/static/item/../登录页面\index.html" class="aa">你好，请登录</a></li>
-							<li><a href="/static/item/../注册页面\index.html" style="color: red;">免费注册</a> |</li>
+							<li style="border: 0;">
+								<a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html"
+								   class="aa">你好，请登录</a>
+								<a th:if="${session.loginUser != null}">欢迎, [[${session.loginUser.nickname}]]</a>
+							</li>
+							<li>
+								<a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html"
+								   style="color: red;">免费注册</a>
+							</li>
 							<li><a href="/static/item/javascript:;" class="aa">我的订单</a> |</li>
 							<li class="jingdong"><a href="/static/item/javascript:;">我的京东</a><span class="glyphicon glyphicon-menu-down">|</span>
 								<ol class="jingdong_ol">
@@ -609,25 +616,25 @@
 
 						<div class="box-btns clear">
 							<div class="box-btns-one">
-								<input type="text" name="" id="" value="1" />
+								<input type="text" name="" id="productNum" value="1"/>
 								<div class="box-btns-one1">
 
 									<div>
 										<button id="jia">
-									+
-									</button>
+											+
+										</button>
 									</div>
 									<div>
 										<button id="jian">
-										-
-									</button>
+											-
+										</button>
 									</div>
 
 								</div>
 							</div>
 							<div class="box-btns-two">
-								<a href="/static/item/../商品分类\index.html">
-									立即预约
+								<a class="addToCart" href="#" th:attr="skuId=${item.info.skuId}">
+									加入购物车
 								</a>
 							</div>
 							<div class="box-btns-three">
@@ -1241,6 +1248,13 @@
 			$(".sku_attr_value").parent().css({"border": "solid 1px #ccc"});
 			$("a[class='sku_attr_value checked']").parent().css({"border": "solid 1px red"});
 		};
+
+		$(".addToCart").click(function () {
+			let skuId = $(this).attr("skuId");
+			let num = $("#productNum").val();
+			location.href = "http://cart.mall.com/addCartItem?skuId=" + skuId + "&num=" + num;
+			return false;
+		});
 	</script>
 
 </html>

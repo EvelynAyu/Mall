@@ -13,6 +13,7 @@ import com.aining.mall.product.feign.WareFeignService;
 import com.aining.mall.product.service.*;
 import com.aining.mall.product.vo.voForSpuSave.*;
 import com.alibaba.fastjson.TypeReference;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +80,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     }
 
     //TODO 事务的处理:高级部分完善
-    @Transactional
+    @GlobalTransactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveSpuInfo(SpuSaveVo spuInfoVo) {
         //1. 保存spu基本信息：pms_spu_info
@@ -336,6 +338,22 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             //TODO 7、重复调用？接口幂等性:重试机制
         }
 
+    }
+
+    @Override
+    public SpuInfoEntity getSpuInfoBySkuId(Long skuId) {
+        SkuInfoEntity skuInfoEntity = skuInfoService.getById(skuId);
+
+        Long spuId = skuInfoEntity.getSpuId();
+
+        //再通过spuId查询spuInfo信息表里的数据
+        SpuInfoEntity spuInfoEntity = this.baseMapper.selectById(spuId);
+
+        //查询品牌表的数据获取品牌名
+        BrandEntity brandEntity = brandService.getById(spuInfoEntity.getBrandId());
+        spuInfoEntity.setBrandName(brandEntity.getName());
+
+        return spuInfoEntity;
     }
 
 }

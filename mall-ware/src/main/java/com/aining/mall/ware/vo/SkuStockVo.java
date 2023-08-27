@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2023/8/16 11:27
  */
 @Data
-public class SkuHasStockVo {
+public class SkuStockVo {
     private Long skuId;
     private Boolean hasStock;
 }

@@ -1,10 +1,12 @@
 package com.aining.mall.ware.service;
 
-import com.aining.mall.ware.vo.SkuHasStockVo;
+import com.aining.common.to.OrderTo;
+import com.aining.common.to.mq.StockLockedTo;
+import com.aining.mall.ware.vo.SkuStockVo;
+import com.aining.mall.ware.vo.WareSkuLockVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.aining.common.utils.PageUtils;
 import com.aining.mall.ware.entity.WareSkuEntity;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -22,6 +24,16 @@ public interface WareSkuService extends IService<WareSkuEntity> {
 
     void addStock(Long skuId, Long wareId, Integer skuNum);
 
-    List<SkuHasStockVo> getSkusHasStock(List<Long> skuIds);
+    List<SkuStockVo> getSkusHasStock(List<Long> skuIds);
+
+    boolean orderLockStock(WareSkuLockVo vo);
+
+    /**
+     * 解锁库存
+     * @param to
+     */
+    void unlockStock(StockLockedTo to);
+
+    void unlockStock(OrderTo orderTo);
 }
 

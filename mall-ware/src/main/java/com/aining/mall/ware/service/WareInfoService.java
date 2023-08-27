@@ -1,5 +1,6 @@
 package com.aining.mall.ware.service;
 
+import com.aining.mall.ware.vo.wareFareVo.FareVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.aining.common.utils.PageUtils;
 import com.aining.mall.ware.entity.WareInfoEntity;
@@ -16,5 +17,7 @@ import java.util.Map;
 public interface WareInfoService extends IService<WareInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    FareVo getFare(Long addrId);
 }
 

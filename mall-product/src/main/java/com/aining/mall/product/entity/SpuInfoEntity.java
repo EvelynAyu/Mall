@@ -43,6 +43,13 @@ public class SpuInfoEntity implements Serializable {
 	 * 品牌id
 	 */
 	private Long brandId;
+
+	/**
+	 * 品牌名
+	 */
+	@TableField(exist = false)
+	private String brandName;
+
 	/**
 	 * 
 	 */

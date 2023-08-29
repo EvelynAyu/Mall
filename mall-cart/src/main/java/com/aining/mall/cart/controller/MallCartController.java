@@ -148,7 +148,6 @@ public class MallCartController {
         cartService.deleteIdCartInfo(skuId);
 
         return "redirect:http://cart.mall.com/cart.html";
-
     }
 
 }

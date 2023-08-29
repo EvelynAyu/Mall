@@ -42,14 +42,10 @@
     <li class="left_floor_ding">顶部</li>
   </ul>
   <header>
-    <div class="head">
-      <a href="/static/#"><img src="/static/index/img/img_01.png" /></a>
-      <p>X</p>
-    </div>
     <!--头部-->
     <div class="header_head">
       <div class="header_head_box">
-        <a href="/static/#" class="img"><img src="/static/index/img/logo.jpg" /></a>
+        <a href="/static/#" class="img"><img src="/static/index/img/logo.jpg" style="width:190px;height:170px"/></a>
         <b class="header_head_p">
   						<a href="/static/#">
   							<img src="/static/index/img/img_05.png" style="border-radius: 50%;"/>
@@ -95,18 +91,22 @@
   					</b>
         <ul>
           <li>
-            <a th:if="${session.loginUser != null}">欢迎, [[${session.loginUser==null?'':session.loginUser.nickname}]]</a>
-            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html">你好，请登录 </a>
+            <a th:if="${session.loginUser != null}">Hello, [[${session.loginUser==null?'':session.loginUser.nickname}]]</a>
+            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html">Login</a>
           </li>
           <li>
-            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html" class="li_2">免费注册</a>
+            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html" class="li_2">Register</a>
           </li>
           <li>
-            <a th:if="${session.loginUser != null}" href="http://auth.mall.com/loguot.html" class="li_2">立即退出</a>
+            <a th:if="${session.loginUser != null}" href="http://auth.mall.com/loguot.html" class="li_2">Log Out</a>
           </li>
           <span>|</span>
           <li>
-            <a href="http://member.mall.com/memberOrder.html">我的订单</a>
+            <a href="http://member.mall.com/memberOrder.html">My Order</a>
+          </li>
+          <span>|</span>
+          <li>
+            <a href="http://wishlist.mall.com/test">Wish List</a>
           </li>
 
 
@@ -124,80 +124,13 @@
       <div class="header_ico">
         <div class="header_gw">
           <img src="/static/index/img/img_15.png" />
-          <span><a href="http://cart.mall.com/cart.html">我的购物车</a></span>          <span>0</span>
+          <span><a href="http://cart.mall.com/cart.html">Basket</a></span>          <span>0</span>
         </div>
         <div class="header_ko">
           <p>购物车中还没有商品，赶紧选购吧！</p>
         </div>
       </div>
-      <div class="header_form_nav">
-        <ul>
-          <li>
-            <a href="/static/#" class="aaaaa">满999减300</a>
-          </li>
-          <li>
-            <a href="/static/#">金立S11</a>
-          </li>
-          <li>
-            <a href="/static/#">农用物资</a>
-          </li>
-          <li>
-            <a href="/static/#">保暖特惠</a>
-          </li>
-          <li>
-            <a href="/static/#">洗衣机节</a>
-          </li>
-          <li>
-            <a href="/static/#">七度空间卫生巾</a>
-          </li>
-          <li>
-            <a href="/static/#">自动波箱油</a>
-          </li>
-          <li>
-            <a href="/static/#">超市</a>
-          </li>
-        </ul>
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <a href="/static/#">秒杀</a>
-          </li>
-          <li>
-            <a href="/static/#">优惠券</a>
-          </li>
-          <li>
-            <a href="/static/#">闪购</a>
-          </li>
-          <li>
-            <a href="/static/#">拍卖</a>
-          </li>
-        </ul>
-        <div class="spacer">|</div>
-        <ul>
-          <li>
-            <a href="/static/#">服饰</a>
-          </li>
-          <li>
-            <a href="/static/#">超市</a>
-          </li>
-          <li>
-            <a href="/static/#">生鲜</a>
-          </li>
-          <li>
-            <a href="/static/#">全球购</a>
-          </li>
-        </ul>
-        <div class="spacer">|</div>
-        <ul>
-          <li>
-            <a href="/static/#">金融</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="right">
-        <a href="/static/#"><img src="/static/index/img/img_21.png" /></a>
-      </div>
+
     </div>
     <!--轮播主体内容-->
     <div class="header_main">
@@ -208,7 +141,6 @@
               <a href="/static/#" class="header_main_left_a"   th:attr="ctg-data = ${category.catId}"><b th:text="${category.name}">家用电器</b></a>
             </li>
           </ul>
-
         </div>
         <div class="header_main_center">
           <div class="swiper-container swiper1">
@@ -485,14 +417,8 @@
           </div>
         </div>
       </div>
-      <div class="header_banner1">
-        <a href="/static/#" class="a">
-  						<img src="/static/index/img/5a1e5ce2N034ce344.png" class="aa" />
-  					</a>
-        <div class="header_banner1_div">
-          <p>X</p>
-        </div>
-      </div>
+
+    </div>
     </div>
   </header>
 

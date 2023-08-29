@@ -87,3 +87,8 @@ spring:
           uri: lb://mall-member
           predicates:
             - Host=member.mall.com
+
+        - id: mall_wishlist_route
+          uri: lb://mall-wishlist
+          predicates:
+            - Host=wishlist.mall.com

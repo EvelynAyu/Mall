@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://192.168.32.10:3306/mall_pms
+    url: jdbc:mysql://192.168.32.10:3306/mall_wlms
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   #    配置Nacos注册中心的地址
@@ -18,19 +18,13 @@ spring:
             readTimeout: 20000
 
   application:
-    name: mall-product
+    name: mall-wishlist
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 
   thymeleaf:
     cache: false
-
-  redis:
-    host: 192.168.32.10
-    port: 6379
-
-
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
@@ -41,7 +35,7 @@ mybatis-plus:
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
 
 server:
-  port: 10000
+  port: 16000
 
 logging:
   level:

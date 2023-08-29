@@ -7,7 +7,6 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +45,7 @@ public class OrderPayedListener {
             }
 
             //乱码解决，这段代码在出现乱码时使用
-//             valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
+//            valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
             params.put(name, valueStr);
         }
 

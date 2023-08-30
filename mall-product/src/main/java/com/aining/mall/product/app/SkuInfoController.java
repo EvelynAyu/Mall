@@ -2,9 +2,13 @@ package com.aining.mall.product.app;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.aining.mall.product.vo.WishlistVo;
+import com.alibaba.fastjson.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.aining.mall.product.entity.SkuInfoEntity;

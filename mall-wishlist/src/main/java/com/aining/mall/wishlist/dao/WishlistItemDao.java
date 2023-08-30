@@ -3,6 +3,7 @@ package com.aining.mall.wishlist.dao;
 import com.aining.mall.wishlist.entity.WishlistItemEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author Aining aininglai@outlook.com
@@ -11,4 +12,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface WishlistItemDao extends BaseMapper<WishlistItemEntity> {
+    void removeItemInWishlist(@Param("skuId") Long skuId, @Param("wlId") Long wlId);
 }

@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>购物车</title>
-    <link rel="icon" href="/static/cart/img/心04.png" type="/image/x-icon"/>
-    <link rel="stylesheet" href="/static/cart/css/One_bdyStyle.css">
-    <link rel="stylesheet" href="/static/cart/css/index.css">
-    <script src="/static/cart/js/jquery-3.1.1.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="/static/cart/css/One_mainFoot.css">
-    <link rel="stylesheet" href="/static/cart/css/font-awesome-4.7.0/css/font-awesome.css"/>
+    <title>Wish lists</title>
+    <link rel="icon" href="/static/wishlist/itemInWishlist/img/心04.png" type="/image/x-icon"/>
+    <link rel="stylesheet" href="/static/wishlist/itemInWishlist/css/One_bdyStyle.css">
+    <link rel="stylesheet" href="/static/wishlist/itemInWishlist/css/index.css">
+    <script src="/static/wishlist/itemInWishlist/js/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/static/wishlist/itemInWishlist/css/One_mainFoot.css">
+    <link rel="stylesheet" href="/static/wishlist/itemInWishlist/css/font-awesome-4.7.0/css/font-awesome.css"/>
+</head>
 </head>
 <body>
 <header>
@@ -17,6 +18,9 @@
             <ul class="header-left">
                 <li>
                     <a href="http://mall.com">Home</a>
+                </li>
+                <li>
+                    <a th:href="'javascript:generateInviteCode(\''+${wishlistId}+'\');'">Shared with other</a>
                 </li>
             </ul>
             <ul class="header-right">
@@ -42,18 +46,13 @@
     <div class="one_sousuo">
         <div class="one_search_top">
             <div class="one_top_left">
-                <a href="http://cart.mall.com/cart.html" class="one_left_link">Basket</a>
-            </div>
-            <div class="one_top_right">
-                <input type="text" class="one_right_txt" placeholder="" onfocus="this.placeholder=''"
-                       onblur="this.placeholder='' ">
-                <input type="button" value="Search" class="one_right_btn">
+                <a href="http://cart.mall.com/cart.html" class="one_left_link">My Basket</a>
             </div>
         </div>
-        <div class="one_search_load" th:if="${session.loginUser == null}">
-            <img src="/static/cart/img/shop_07.jpg" class="one_load_wraing">
-            <span>You are not yet logged in! Once you log in, the items in your shopping cart will be saved to your account.</span>
-            <a href="#"><input type="button" onclick="login()" value="Sign in" class="one_load_btn"></a>
+        <div class="one_search_load">
+            <a th:if="${wishlistItemLists.size() == 0}">
+                There is nothing in the wishlist，<a href="http://mall.com/" style="color:#e64346">Go shopping</a>
+            </a>
         </div>
     </div>
 </div>
@@ -61,58 +60,47 @@
     <div class="OneBdy_box">
         <div class="One_tabTop">
             <div class="One_Topleft">
-                <span>All Product </span>
-
+                <span>All products </span>
             </div>
-
         </div>
         <div class="One_ShopTop">
             <ul>
                 <li><input type="checkbox" class="allCheck"></li>
                 <li>Name</li>
                 <li>Price</li>
-                <li>Quantity</li>
-                <li>Total</li>
-                <li></li>
+<!--                <li>Count</li>-->
+                <li>Creator</li>
+<!--                <li>Delete</li>-->
             </ul>
         </div>
 
         <div class="One_ShopCon">
-<!--            <h1 th:if="${cart.items == null}">-->
-<!--                Nothin in the basket，<a href="http://mall.com/">Go Shopping</a>-->
-<!--            </h1>-->
-            <ul th:if="${cart.items != null}">
-                <li th:each="item:${cart.items}">
+            <ul th:if="${wishlistItemLists != null}">
+                <li th:each="wishlistItem:${wishlistItemLists}">
                     <div>
                     </div>
                     <div>
                         <ol>
-                            <li><input type="checkbox" th:attr="skuId=${item.skuId}" class="itemChecked" th:checked="${item.check}"></li>
+                            <li><input type="checkbox" th:attr="skuId=${wishlistItem.skuId}"></li>
                             <li>
-                                <dt><img th:src="${item.image}" alt=""></dt>
+                                <dt><img th:src="${wishlistItem.image}" alt=""></dt>
                                 <dd style="width: 300px;">
                                     <p>
-                                        <span th:text="${item.title}">TCL 55A950C 55英寸32核</span>
+                                        <span th:text="${wishlistItem.title}">TCL 55A950C 55英寸32核</span>
                                         <br/>
-                                        <span th:each="attr:${item.skuAttrValues}" th:text="${attr}">尺码: 55时 超薄曲面 人工智能</span>
+                                        <span th:each="attr:${wishlistItem.skuAttrValues}" th:text="${attr}">尺码: 55时 超薄曲面 人工智能</span>
                                     </p>
                                 </dd>
                             </li>
                             <li>
-                                <p class="dj" th:text="'￥' + ${#numbers.formatDecimal(item.price,3,2)}">￥4599.00</p>
-
+                                <p class="dj" th:text="'￥' + ${#numbers.formatDecimal(wishlistItem.price,3,2)}">￥4599.00</p>
+                            </li>
+<!--                            <li>#</li>-->
+                            <li>
+                                <p th:text="${wishlistItem.getCreateUserName()}"></p>
                             </li>
                             <li>
-                                <p th:attr="skuId=${item.skuId}">
-                                    <span class="countOpsBtn" style="width: 15px">-</span>
-                                    <span class="countOpsNum" th:text="${item.count}">5</span>
-                                    <span class="countOpsBtn">+</span>
-                                </p>
-
-                            </li>
-                            <li style="font-weight:bold"><p class="zj">￥[[${#numbers.formatDecimal(item.totalPrice,3,2)}]]</p></li>
-                            <li>
-                                <p class="deleteItemBtn" th:attr="skuId=${item.skuId}">delete</p>
+                                <p class="deleteItemBtn" th:attr="skuId=${wishlistItem.skuId}, wishlistId=${wishlistItem.getWlId()}">delete</p>
                             </li>
                         </ol>
                     </div>
@@ -120,31 +108,14 @@
 
             </ul >
         </div>
+
+
         <div class="One_ShopFootBuy fix1">
             <div>
-                <ul>
-                    <li><input type="checkbox" class="allCheck"><span></span></li>
-                    <li>Check the items,</li>
-                    <li>click 'Buy Now' to check out</li>
-<!--                    <li>清除下柜商品</li>-->
-                </ul>
-            </div>
-            <div>
                 <font style="color:#e64346;font-weight:bold;" class="sumNum"> </font>&nbsp;
-
-                <ul>
-                    <li><img src="/static/cart/img/buyNumleft.png" alt=""></li>
-                    <li><img src="/static/cart/img/buyNumright.png" alt=""></li>
-                </ul>
             </div>
             <div>
-                <ol>
-                    <li>Total:<span style="color:#e64346;font-weight:bold;font-size:16px;" class="fnt">￥[[${#numbers.formatDecimal(cart.totalAmount, 3, 2)}]]</span>
-                    <li>Discount：￥[[${#numbers.formatDecimal(cart.reduce,1,2)}]]</li>
-                </ol>
-            </div>
-            <div>
-                <button onclick="toTrade()" type="button">Buy Now</button>
+                <button onclick="toPersonalWishlist()" type="button">My Wishlist</button>
             </div>
         </div>
     </div>
@@ -152,36 +123,36 @@
 
 <div class="One_isDel">
     <p>
-        <span>Delete item</span><span><img src="/static/cart/img/错误.png" alt=""></span>
+        <span>Delete</span><span><img src="/static/wishlist/itemInWishlist/img/错误.png" alt=""></span>
     </p>
     <div>
         <dl>
+            <dt><img src="/static/wishlist/itemInWishlist/img/感叹三角形 (2).png" alt=""></dt>
             <dd>
-                <li>Are you sure you want to delete？</li>
+                <li>Confirm to delete？</li>
             </dd>
         </dl>
     </div>
     <div>
-        <button type="button" onclick="deleteItem()">Delete</button>
-
+        <button type="button" onclick="deleteItem()">delete</button>
     </div>
 </div>
 <div class="One_moveGzIfNull">
     <p>
-        <span>Delete</span><span><img src="/static/cart/img/错误.png" alt=""></span>
+        <span>delete</span><span><img src="/static/wishlist/itemInWishlist/img/错误.png" alt=""></span>
     </p>
     <dl>
-        <dt><img src="/static/cart/img/感叹三角形 (2).png" alt=""></dt>
+        <dt><img src="/static/wishlist/itemInWishlist/img/感叹三角形 (2).png" alt=""></dt>
         <dd>请至少选中一件商品！</dd>
     </dl>
 </div>
 <div class="One_moveMyGz">
     <p>
-        <span>删除</span><span><img src="/static/cart/img/错误.png" alt=""></span>
+        <span>delete</span><span><img src="/static/wishlist/itemInWishlist/img/错误.png" alt=""></span>
     </p>
     <div>
         <dl>
-            <dt><img src="/static/cart/img/感叹三角形 (2).png" alt=""></dt>
+            <dt><img src="/static/wishlist/itemInWishlist/img/感叹三角形 (2).png" alt=""></dt>
             <dd>
                 <li>移到关注</li>
                 <li>移动后选中商品将不再购物车中显示</li>
@@ -189,16 +160,16 @@
         </dl>
     </div>
     <div>
-        <button type="button">确定</button>
-        <button type="button">取消</button>
+        <button type="button">confirm</button>
+        <button type="button">cancel</button>
     </div>
 </div>
 <div class="One_clearShop">
     <p>
-        <span>提示</span><span><img src="/static/cart/img/错误.png" alt=""></span>
+        <span>提示</span><span><img src="/static/wishlist/itemInWishlist/img/错误.png" alt=""></span>
     </p>
     <dl>
-        <dt><img src="/static/cart/img/感叹三角形 (2).png" alt=""></dt>
+        <dt><img src="/static/wishlist/itemInWishlist/img/感叹三角形 (2).png" alt=""></dt>
         <dd>没有下柜商品!</dd>
     </dl>
 </div>
@@ -208,10 +179,10 @@
 
 </div>
 </body>
-<script src="/static/cart/js/index.js" charset="utf-8"></script>
+<script src="/static/wishlist/itemInWishlist/js/index.js" charset="utf-8"></script>
 <script type="text/javascript">
-    function toTrade() {
-        window.location.href = "http://order.mall.com/toTrade";
+    function toPersonalWishlist() {
+        window.location.href = "http://wishlist.mall.com/showPersonalWishlist";
     }
 
     function toItem(skuId) {
@@ -257,6 +228,17 @@
                 $(".fix").show();
             }
         })*/
+
+    function generateInviteCode(wishlistId) {
+        // 使用 AJAX 向后端发送请求
+        fetch('/generateInviteCode?wishlistId=' + wishlistId)
+            .then(response => response.json())
+            .then(data => {
+                // 接收后端返回的邀请码
+                const inviteCode = data.inviteCode;
+                alert('The invitation link is ：http://wishlist.mall.com/invite/' + inviteCode);
+            });
+    }
 
 
     //购物车顶端tab
@@ -772,13 +754,15 @@
 
 
     let deleteId = 0;
+    let wishlistId = 0;
     $(".deleteItemBtn").click(function () {
         deleteId = $(this).attr("skuId");
+        wishlistId = $(this).attr("wishlistId");
     });
 
-    //删除购物车选项
+    //删除心愿单选项
     function deleteItem() {
-        location.href = "http://cart.mall.com/deleteItem?skuId=" + deleteId;
+        location.href = "http://wishlist.mall.com/deleteItemInWishlist?skuId=" + deleteId + "&wlId=" + wishlistId;
     }
 
 

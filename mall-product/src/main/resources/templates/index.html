@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Shop Toghter</title>
   <link rel="stylesheet" href="/static/index/css/swiper-3.4.2.min.css">
   <link rel="stylesheet" href="/static/index/css/GL.css">
   <script src="/static/index/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
@@ -45,60 +45,18 @@
     <!--头部-->
     <div class="header_head">
       <div class="header_head_box">
-        <a href="/static/#" class="img"><img src="/static/index/img/logo.jpg" style="width:190px;height:170px"/></a>
-        <b class="header_head_p">
-  						<a href="/static/#">
-  							<img src="/static/index/img/img_05.png" style="border-radius: 50%;"/>
-  							<!--<span class="glyphicon glyphicon-map-marker"></span>-->
-  							 北京</a>
-  						<div class="header_head_p_cs">
-  							<a href="/static/#" style="background: #C81623;color: #fff;">北京</a>
-  							<a href="/static/#">上海</a>
-  							<a href="/static/#">天津</a>
-  							<a href="/static/#">重庆</a>
-  							<a href="/static/#">河北</a>
-  							<a href="/static/#">山西</a>
-  							<a href="/static/#">河南</a>
-  							<a href="/static/#">辽宁</a>
-  							<a href="/static/#">吉林</a>
-  							<a href="/static/#">黑龙江</a>
-  							<a href="/static/#">内蒙古</a>
-  							<a href="/static/#">江苏</a>
-  							<a href="/static/#">山东</a>
-  							<a href="/static/#">安徽</a>
-  							<a href="/static/#">浙江</a>
-  							<a href="/static/#">福建</a>
-  							<a href="/static/#">湖北</a>
-  							<a href="/static/#">湖南</a>
-  							<a href="/static/#">广东</a>
-  							<a href="/static/#">广西</a>
-  							<a href="/static/#">江西</a>
-  							<a href="/static/#">四川</a>
-  							<a href="/static/#">海南</a>
-  							<a href="/static/#">贵州</a>
-  							<a href="/static/#">云南</a>
-  							<a href="/static/#">西藏</a>
-  							<a href="/static/#">陕西</a>
-  							<a href="/static/#">甘肃</a>
-  							<a href="/static/#">青海</a>
-  							<a href="/static/#">宁夏</a>
-  							<a href="/static/#">新疆</a>
-  							<a href="/static/#">港澳</a>
-  							<a href="/static/#">台湾</a>
-  							<a href="/static/#">钓鱼岛</a>
-  							<a href="/static/#">海外</a>
-  						</div>
-  					</b>
+<!--        <a href="/static/#" class="img"><img src="/static/index/img/logo.jpg" style="width:190px;height:170px"/></a>-->
+
         <ul>
           <li>
             <a th:if="${session.loginUser != null}">Hello, [[${session.loginUser==null?'':session.loginUser.nickname}]]</a>
-            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html">Login</a>
+            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html">Sign in</a>
           </li>
           <li>
-            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html" class="li_2">Register</a>
+            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html" class="li_2">Sign up</a>
           </li>
           <li>
-            <a th:if="${session.loginUser != null}" href="http://auth.mall.com/loguot.html" class="li_2">Log Out</a>
+            <a th:if="${session.loginUser != null}" href="http://auth.mall.com/loguot.html" class="li_2">Sign Out</a>
           </li>
           <span>|</span>
           <li>
@@ -106,10 +64,8 @@
           </li>
           <span>|</span>
           <li>
-            <a href="http://wishlist.mall.com/test">Wish List</a>
+            <a href="http://wishlist.mall.com/showPersonalWishlist">Wish List</a>
           </li>
-
-
         </ul>
       </div>
     </div>
@@ -124,10 +80,7 @@
       <div class="header_ico">
         <div class="header_gw">
           <img src="/static/index/img/img_15.png" />
-          <span><a href="http://cart.mall.com/cart.html">Basket</a></span>          <span>0</span>
-        </div>
-        <div class="header_ko">
-          <p>购物车中还没有商品，赶紧选购吧！</p>
+          <span><a href="http://cart.mall.com/cart.html">Basket</a></span>
         </div>
       </div>
 
@@ -176,59 +129,55 @@
                 <a href="/static/#"><img class="" src="/static/index/img/touxiang.png"></a>
               </div>
               <div class="user_info_show">
-                <p class="">Hi, 欢迎来到!</p>
+                <p class="">Welcome!</p>
                 <p>
-                  <a href="/static/#" class="">登录</a>
-                  <a href="/static/#" class="">注册</a>
+                  <a href="/static/#" class="">Sign in</a>
+                  <a href="/static/#" class="">Register</a>
                 </p>
               </div>
-            </div>
-            <div class="user_info_hide">
-              <a href="/static/#">新人福利</a>
-              <a href="/static/#">PLUS会员</a>
             </div>
           </div>
           <div class="header_main_right_new">
             <div class="header_new">
               <div class="header_new_t">
                 <p class="active">
-                  <a href="/static/#">促销</a>
+                  <a href="/static/#">Sale</a>
                 </p>
                 <p>
-                  <a href="/static/#">公告</a>
+                  <a href="/static/#">Notice</a>
                 </p>
-                <a href="/static/#">更多</a>
+                <a href="/static/#">More</a>
               </div>
               <div class="header_new_connter">
                 <div class="header_new_connter_1">
                   <ul>
                     <li>
-                      <a href="/static/#">全民纸巾大作战</a>
+                      <a href="/static/#">Summer Sale Extravaganza: Up to 50% Off!</a>
                     </li>
                     <li>
-                      <a href="/static/#">家具建材满999减300元</a>
+                      <a href="/static/#">Clearance Event: Everything Must Go!</a>
                     </li>
                     <li>
-                      <a href="/static/#">黑科技冰箱，下单立减千元</a>
+                      <a href="/static/#">Buy One, Get One Free: Limited Time Offer!</a>
                     </li>
                     <li>
-                      <a href="/static/#">抢102减101神券！</a>
+                      <a href="/static/#">New Arrivals: Shop the Latest Trends Now!</a>
                     </li>
                   </ul>
                 </div>
                 <div class="header_new_connter_1" style="display: none;">
                   <ul>
                     <li>
-                      <a href="/static/#">关于召回普利司通（天津）轮胎有限公司2个规格乘用车轮胎的公告</a>
+                      <a href="/static/#">New Payment Options Now Available!</a>
                     </li>
                     <li>
-                      <a href="/static/#">物流推出配送员统一外呼电话"95056”</a>
+                      <a href="/static/#">Service Update: Share wish lists with friends!</a>
                     </li>
                     <li>
-                      <a href="/static/#">天府大件运营中心开仓公告</a>
+                      <a href="/static/#">Community Update: Charity Event Recap</a>
                     </li>
                     <li>
-                      <a href="/static/#">大件物流“送装一体”服务全面升级！</a>
+                      <a href="/static/#">Upcoming Webinar: Get the Most from Your Shopping Experience</a>
                     </li>
                   </ul>
                 </div>
@@ -241,73 +190,49 @@
                 <li class="ser_box_item">
                   <a href="/static/#">
   											<img src="/static/index/img/huafei.png" />
-  											<span>话费</span>
+  											<span>Phone bill</span>
   										</a>
                 </li>
                 <li class="ser_box_item">
                   <a href="/static/#">
   											<img src="/static/index/img/jipiao.png" />
-  											<span>机票</span>
+  											<span>Airplane ticket</span>
   										</a>
                 </li>
                 <li class="ser_box_item">
                   <a href="/static/#">
   											<img src="/static/index/img/jiudian.png" />
-  											<span>酒店</span>
+  											<span>Hotel</span>
   										</a>
                 </li>
                 <li class="ser_box_item">
                   <a href="/static/#">
   											<img src="/static/index/img/youxi.png" />
-  											<span>游戏</span>
+  											<span>Game</span>
   										</a>
                 </li>
                 <li class="ser_box_item1">
                   <a href="/static/#">
   											<img src="/static/index/img/qiyegou.png" />
-  											<span>企业购</span>
+  											<span>Tourist attraction</span>
   										</a>
                 </li>
                 <li class="ser_box_item1">
                   <a href="/static/#">
   											<img src="/static/index/img/jiayouka.png" />
-  											<span>加油卡</span>
+  											<span>Gas card</span>
   										</a>
                 </li>
                 <li class="ser_box_item1">
                   <a href="/static/#">
   											<img src="/static/index/img/dianyingpiao.png" />
-  											<span>电影票</span>
+  											<span>Movie ticket</span>
   										</a>
                 </li>
                 <li class="ser_box_item1">
                   <a href="/static/#">
   											<img src="/static/index/img/huochepiao.png" style="height:20px;" />
-  											<span>火车票</span>
-  										</a>
-                </li>
-                <li class="ser_box_item1">
-                  <a href="/static/#">
-  											<img src="/static/index/img/zhongchou.png" />
-  											<span>众筹</span>
-  										</a>
-                </li>
-                <li class="ser_box_item1">
-                  <a href="/static/#">
-  											<img src="/static/index/img/licai.png" style="height:22px;" />
-  											<span>理财</span>
-  										</a>
-                </li>
-                <li class="ser_box_item1">
-                  <a href="/static/#">
-  											<img src="/static/index/img/lipinka.png" style="height:14px;" />
-  											<span>礼品卡</span>
-  										</a>
-                </li>
-                <li class="ser_box_item1">
-                  <a href="/static/#">
-  											<img src="/static/index/img/baitiao.png" style="height:20px;" />
-  											<span>白条</span>
+  											<span>Train ticket</span>
   										</a>
                 </li>
               </ul>
@@ -428,19 +353,18 @@
       <p class="section_second_header_img"></p>
       <div class="section_second_header_left">
         <p></p>
-        <span class="">秒杀</span>
-        <span>总有你想不到的低价</span>
+        <span class="">Today's Deals</span>
+<!--        <span>总有你想不到的低价</span>-->
         <span>
         </span>
       </div>
       <div class="section_second_header_right">
-        <p>当前场次</p>
+        <p>Ends after</p>
         <span class="section_second_header_right_hours">00</span>
         <span class="section_second_header_right_mao">：</span>
         <span class="section_second_header_right_minutes">00</span>
         <span class="section_second_header_right_mao">：</span>
         <span class="section_second_header_right_second">00</span>
-        <p>后结束</p>
       </div>
     </div>
     <div class="section_second_list">
@@ -450,58 +374,28 @@
             <ul>
               <li>
                 <img src="/static/index/img/section_second_list_img1.jpg" alt="">
-                <p>花王 (Merries) 妙而舒 纸尿裤 大号 L54片 尿不湿（9-14千克） （日本官方直采） 花王 (Merries) 妙而舒 纸尿裤 大号 L54片 尿不湿（9-14千</p>
-                <span>¥83.9</span><s>¥99.9</s>
+                <p>Ariel All-in-One Platinum PODS Washing Liquid Laundry Detergent Tablets / Capsules, 120 Washes (60 x 2) with Extra Stain Removal For Extra Hygiene</p>
+                <span>¥24.9</span><s>¥36.9</s>
               </li>
               <li>
                 <img src="/static/index/img/section_second_list_img2.jpg" alt="">
-                <p>华为mate9 4GB+32GB版 月光银 移动联通电信4G手机 双卡</p>
+                <p>Disposable Face Towel 100 Counts, Extra Thick & Soft Dry Baby Wipes for Women, Dry and Wet Use Facial Cotton Tissue, Make Up Removing Thickening for Sensitive Skin 20x15cm (4 PACK=400Counts)</p>
                 <span>¥17.90</span><s>¥29.90</s>
               </li>
               <li>
                 <img src="/static/index/img/section_second_list_img3.jpg" alt="">
-                <p>超能 植翠低泡洗衣液（鲜艳亮丽）2kg/袋装（新老包装随机</p>
+                <p>Curel Trial & Travel Kit, Two Week Skincare Routine for Dry, Sensitive Skin</p>
                 <span>¥20.70</span><s>¥44.90</s>
               </li>
               <li>
                 <img src="/static/index/img/section_second_list_img4.jpg" alt="">
-                <p>长城（GreatWall）红酒 特选5年橡木桶解百纳干红葡萄酒 整</p>
-                <span>¥399.00</span><s>¥599.00</s>
+                <p>REAL TECHNIQUES,5 Count (Pack of 1) Everyday Essentials Makeup Brush Complete Face Set (Miracle Complexion Sponge, Expert Face, Blush, Setting and Deluxe Crease Brushes)</p>
+                <span>¥30.00</span><s>¥50.00</s>
               </li>
               <li>
                 <img src="/static/index/img/section_second_list_img5.jpg" alt="">
-                <p>惠普(HP)暗影精灵2代Pro 15.6英寸游戏笔记本电脑(i5-7300H</p>
-                <span>¥5999.00</span><s>¥6499.00</s>
-              </li>
-            </ul>
-          </div>
-          <div class="swiper-slide">
-            <ul>
-              <li>
-                <img src="/static/index/img/section_second_list_img6.jpg" alt="">
-                <p>Apple iMac 21.5英寸一体机（2017新款四核Core i5 处理器/8GB内存/1TB/RP555显卡/4K屏 MNDY2CH/A） Apple iMac 21.5英寸一体机（2017新款四核Core i5 处理</p>
-                <span>¥9588.00</span><s>¥10288.00</s>
-              </li>
-              <li>
-                <img src="/static/index/img/section_second_list_img7.jpg" alt="">
-                <p>中柏（Jumper）EZpad 4S Pro 10.6英寸二合一平板电脑（X5 z</p>
-                <span>¥848.00</span><s>¥899.00</s>
-              </li>
-              <li>
-                <img src="/static/index/img/section_second_list_img8.jpg" alt="">
-                <p>飞利浦（PHILIPS）电动牙刷HX6761/03亮白型成人充电式声波震动牙刷粉色 飞利浦（PHILIPS）电动牙刷HX6761/03亮白型成人充电式声波
-                </p>
-                <span>¥379.00</span><s>¥698.00</s>
-              </li>
-              <li>
-                <img src="/static/index/img/section_second_list_img9.jpg" alt="">
-                <p>美的(Midea) 258升 变频智能三门冰箱 一级能效 风冷无霜 中门</p>
-                <span>¥3088.00</span><s>¥3299.00</s>
-              </li>
-              <li>
-                <img src="/static/index/img/section_second_list_img10.jpg" alt="">
-                <p>【第二件减50元】蒙羊 内蒙古羔羊羊肋排 2.4斤</p>
-                <span>¥99.90</span><s>¥199.00</s>
+                <p>Under Armour Unisex UA Heatgear NS, trainer socks; compression socks</p>
+                <span>¥40.00</span><s>¥50.00</s>
               </li>
             </ul>
           </div>

@@ -1,9 +1,16 @@
 package com.aining.mall.wishlist.controller;
 
+import com.aining.common.utils.R;
 import com.aining.mall.wishlist.service.WishlistItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * 分享单中的商品信息
@@ -17,4 +24,5 @@ import org.springframework.web.bind.annotation.RestController;
 public class WishlistItemController {
     @Autowired
     private WishlistItemService wishlistItemService;
+
 }

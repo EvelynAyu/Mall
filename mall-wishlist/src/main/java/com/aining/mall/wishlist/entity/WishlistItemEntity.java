@@ -1,10 +1,13 @@
 package com.aining.mall.wishlist.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author Aining aininglai@outlook.com
@@ -27,27 +30,33 @@ public class WishlistItemEntity implements Serializable {
      */
     private Long wlId;
     /**
-     * spu_id
+     * skuId
      */
-    private Long spuId;
+    private Long skuId;
     /**
-     * spu_name
+     * sku名称
      */
-    private String spuName;
+    private String title;
     /**
-     * spu_pic
+     * sku图片
      */
-    private String spuPic;
+    private String image;
     /**
-     * 品牌
+     * 价格
      */
-    private String spuBrand;
-    /**
-     * 商品分类id
-     */
-    private Long categoryId;
+    private BigDecimal price;
     /**
      * 添加该条目的用户id
      */
+    private Long createUserId;
+    /**
+     *  添加该条目的用户姓名
+     */
     private String createUserName;
+
+    /**
+     * 商品套餐属性
+     */
+    @TableField(exist = false)
+    private List<String> skuAttrValues;
 }

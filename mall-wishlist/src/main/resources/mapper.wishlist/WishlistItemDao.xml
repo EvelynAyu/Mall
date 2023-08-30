@@ -7,14 +7,17 @@
     <resultMap type="com.aining.mall.wishlist.entity.WishlistItemEntity" id="wishlistItemMap">
         <result property="id" column="id"/>
         <result property="wlId" column="wl_id"/>
-        <result property="spuId" column="spu_id"/>
-        <result property="spuName" column="spu_name"/>
-        <result property="spuPic" column="spu_pic"/>
-        <result property="spuBrand" column="spu_brand"/>
-        <result property="categoryId" column="category_id"/>
+        <result property="skuId" column="sku_id"/>
+        <result property="title" column="title"/>
+        <result property="image" column="image"/>
+        <result property="price" column="price"/>
+        <result property="createUserId" column="create_user_id"/>
         <result property="createUserName" column="create_user_name"/>
 
     </resultMap>
+    <delete id="removeItemInWishlist">
+        DELETE FROM `wlms_wishlist_item` WHERE sku_id=#{skuId} AND wl_id=#{wlId}
+    </delete>
 
 
 </mapper>

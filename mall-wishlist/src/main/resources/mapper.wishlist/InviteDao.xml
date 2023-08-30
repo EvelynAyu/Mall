@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.aining.mall.wishlist.dao.SharedWishlistDao">
+<mapper namespace="com.aining.mall.wishlist.dao.InviteDao">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.aining.mall.wishlist.entity.SharedWishlistEntity" id="sharedWishlistMap">
+    <resultMap type="com.aining.mall.wishlist.entity.InviteEntity" id="inviteEntityMap">
         <result property="id" column="id"/>
+        <result property="inviteCode" column="invite_code"/>
         <result property="wlId" column="wl_id"/>
         <result property="wlName" column="wl_name"/>
-        <result property="collaboratorId" column="collaborator_id"/>
-        <result property="collaboratorName" column="collaborator_name"/>
+        <result property="ownerId" column="owner_id"/>
+        <result property="ownerName" column="owner_name"/>
     </resultMap>
 </mapper>

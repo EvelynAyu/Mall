@@ -39,7 +39,7 @@ public class SmsComponent {
         Map<String, String> bodys = new HashMap<String, String>();
         bodys.put("content", "code:"+code);
         bodys.put("template_id", "CST_ptdie100");
-        bodys.put("phone_number", "13631003251");
+        bodys.put("phone_number", phone);
 
 
         try {

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Phantom by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/static/wishlist/assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="/static/wishlist/assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+
+			<!-- Logo -->
+			<a href="index.html" class="logo">
+				<span class="symbol"><img src="/static/wishlist/images/logo.svg" alt="" /></span><span class="title">Wishlist</span>
+			</a>
+
+			<!-- Nav -->
+			<nav>
+				<ul>
+					<li><a href="#menu">Menu</a></li>
+				</ul>
+			</nav>
+
+		</div>
+	</header>
+
+	<!-- Menu -->
+	<nav id="menu">
+		<h2>Menu</h2>
+		<ul>
+			<li><a href="showPersonalWishlist">Personal wish lists</a></li>
+			<li><a href="showSharedWishlist">Shared wish lists</a></li>
+			<li><a href="http://mall.com">Home</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+			<header>
+				<h1>There are your shared wish lists<br /></h1>
+				<p>Share your wish list to experience the joy of interactive shopping！ </p>
+			</header>
+			<section class="tiles" >
+				<article class="style5" th:each="sharedWishlist : ${sharedWishlists}">
+									<span class="image">
+										<img src="/static/wishlist/images/pic05.jpg" alt="" />
+									</span>
+					<a th:href="|http://wishlist.mall.com/showItemInWishlist/${sharedWishlist.getWlId()}|">
+						<h2 th:text="${sharedWishlist.getWlName()}"></h2>
+					</a>
+				</article>
+			</section>
+		</div>
+	</div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/static/wishlist/assets/js/jquery.min.js"></script>
+<script src="/static/wishlist/assets/js/browser.min.js"></script>
+<script src="/static/wishlist/assets/js/breakpoints.min.js"></script>
+<script src="/static/wishlist/assets/js/util.js"></script>
+<script src="/static/wishlist/assets/js/main.js"></script>
+
+</body>
+</html>

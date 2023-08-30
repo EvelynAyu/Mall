@@ -7,33 +7,46 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
+ * 邀请码
  * @author Aining aininglai@outlook.com
  * @version 1.0
- * @date 2023/8/28 21:34
+ * @date 2023/8/29 19:04
  */
 
 @Data
-@TableName("wlms_shared_wishlist")
-public class SharedWishlistEntity implements Serializable {
+@TableName("wlms_invite")
+public class InviteEntity implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 邀请码id
+     */
     @TableId
     private Long id;
+
     /**
-     * 分享状态的Wishlist id
+     * 邀请码
+     */
+    private String inviteCode;
+
+    /**
+     * Wishlist id
      */
     private Long wlId;
+
     /**
-     * wishlish 名称
+     * wishlist 名称
      */
     private String wlName;
 
     /**
-     * 分享人id
+     * 创建人id
      */
-    private Long collaboratorId;
+    private Long ownerId;
 
     /**
-     * 分享人姓名
+     *创建人姓名
      */
-    private String collaboratorName;
+    private String ownerName;
+
 }

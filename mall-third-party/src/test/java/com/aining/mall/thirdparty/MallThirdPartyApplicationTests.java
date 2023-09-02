@@ -74,13 +74,6 @@ public class MallThirdPartyApplicationTests {
 
     @Test
     public void testUpload() throws FileNotFoundException {
-//        // Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
-//        String endpoint = "oss-cn-shenzhen.aliyuncs.com";
-//        // 强烈建议不要把访问凭证保存到工程代码里，否则可能导致访问凭证泄露，威胁您账号下所有资源的安全。本代码示例以从环境变量中获取访问凭证为例。运行本代码示例之前，请先配置环境变量。
-//        // 填写Bucket名称，例如examplebucket。
-//        String accessKeyId = "LTAI5tAACcFVz6ymjh7wiAoC";
-//        // 填写Object完整路径，完整路径中不能包含Bucket名称，例如exampledir/exampleobject.txt。
-//        String accessKeySecret = "3KS2Plea2yuCl9MsgkDipt2zTnM0i0";
 
         // 创建OSSClient实例。
 //        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);

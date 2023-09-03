@@ -138,14 +138,14 @@ public class SysMenuController extends AbstractController {
 	@PostMapping("/delete/{menuId}")
 	@RequiresPermissions("sys:menu:delete")
 	public R delete(@PathVariable("menuId") long menuId){
-		if(menuId <= 31){
-			return R.error("系统菜单，不能删除");
-		}
+//		if(menuId <= 31){
+//			return R.error("系统菜单，不能删除");
+//		}
 
 		//判断是否有子菜单或按钮
 		List<SysMenuEntity> menuList = sysMenuService.queryListParentId(menuId);
 		if(menuList.size() > 0){
-			return R.error("请先删除子菜单或按钮");
+			return R.error("Please delete the submenus and buttons first.");
 		}
 
 		sysMenuService.delete(menuId);
@@ -158,17 +158,17 @@ public class SysMenuController extends AbstractController {
 	 */
 	private void verifyForm(SysMenuEntity menu){
 		if(StringUtils.isBlank(menu.getName())){
-			throw new RRException("菜单名称不能为空");
+			throw new RRException("Menu name cannot be empty.");
 		}
 		
 		if(menu.getParentId() == null){
-			throw new RRException("上级菜单不能为空");
+			throw new RRException("The parent menu cannot be empty.");
 		}
 		
 		//菜单
 		if(menu.getType() == Constant.MenuType.MENU.getValue()){
 			if(StringUtils.isBlank(menu.getUrl())){
-				throw new RRException("菜单URL不能为空");
+				throw new RRException("The menu url cannot be empty.");
 			}
 		}
 		
@@ -183,7 +183,7 @@ public class SysMenuController extends AbstractController {
 		if(menu.getType() == Constant.MenuType.CATALOG.getValue() ||
 				menu.getType() == Constant.MenuType.MENU.getValue()){
 			if(parentType != Constant.MenuType.CATALOG.getValue()){
-				throw new RRException("上级菜单只能为目录类型");
+				throw new RRException("Parent menu can only be of directory type.");
 			}
 			return ;
 		}
@@ -191,7 +191,7 @@ public class SysMenuController extends AbstractController {
 		//按钮
 		if(menu.getType() == Constant.MenuType.BUTTON.getValue()){
 			if(parentType != Constant.MenuType.MENU.getValue()){
-				throw new RRException("上级菜单只能为菜单类型");
+				throw new RRException("Parent menu must be of menu type");
 			}
 			return ;
 		}

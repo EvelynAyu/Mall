@@ -79,7 +79,6 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         return new PageUtils(page);
     }
 
-    //TODO 事务的处理:高级部分完善
     @GlobalTransactional(rollbackFor = Exception.class)
 //    @Transactional(rollbackFor = Exception.class)
     @Override
@@ -289,7 +288,6 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             log.error("库存服务查询异常：原因{}",e);
         }
 
-
         // 2. 封装每个sku的信息
         Map<Long, Boolean> finalStockMap = stockMap;
         List<SkuESModel> skuESModels = skus.stream().map((sku) -> {
@@ -337,8 +335,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             //远程调用失败
             //TODO 7、重复调用？接口幂等性:重试机制
         }
-
     }
+
 
     @Override
     public SpuInfoEntity getSpuInfoBySkuId(Long skuId) {

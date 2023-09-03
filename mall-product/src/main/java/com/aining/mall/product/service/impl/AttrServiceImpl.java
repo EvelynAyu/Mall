@@ -176,7 +176,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         return attrRespVo;
     }
 
-    @Transactional()
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateAttr(AttrVo attr) {
         // 更新数据

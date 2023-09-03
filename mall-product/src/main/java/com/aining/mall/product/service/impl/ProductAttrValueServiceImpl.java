@@ -43,9 +43,10 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         return productAttrValueEntities;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateSpuAttr(Long spuId, List<ProductAttrValueEntity> productAttrValueEntities) {
+        // TODO 更新ES中的数据
         // 删除原来的product_value值
         this.baseMapper.delete(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id",spuId));
         // 插入新的product_value值

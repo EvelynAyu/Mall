@@ -8,20 +8,6 @@
 		<link rel="stylesheet" type="text/css" href="/static/item/scss/jd.css"/>
 		<link rel="stylesheet" href="/static/item/scss/header.css" />
 		<link rel="stylesheet" type="text/css" href="/static/item/bootstrap/css/bootstrap.css"/>
-
-		<style>
-			/* 弹窗样式 */
-			#wishlistPopup {
-				display: none;
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				background: white;
-				padding: 20px;
-				border: 1px solid #ccc;
-			}
-		</style>
 	</head>
 	<body>
 		<div id="max">
@@ -239,7 +225,7 @@
 						<div class="box-attr-3">
 							<div class="box-attr clear" th:each="attr : ${item.saleAttr}">
 								<dl>
-									<dt>selsct[[${attr.attrName}]]</dt>
+									<dt>selsct [[${attr.attrName}]]</dt>
 									<dd th:each="val : ${attr.attrValues}">
 										<a th:attr=" class=${#lists.contains(#strings.listSplit(val.skuIds,','),item.info.skuId.toString())
                                    ? 'sku_attr_value checked': 'sku_attr_value'}, skus=${val.skuIds} "

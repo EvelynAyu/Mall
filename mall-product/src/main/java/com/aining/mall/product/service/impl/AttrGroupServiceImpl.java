@@ -74,15 +74,15 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         List<AttrGroupEntity> groupEntities = this.list(new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catelogId));
         // 2. 通过每个分组查出分组中的属性
         List<AttrGroupWithAttrsVo> attrGroupWithAttrsVos = groupEntities.stream().map((groupEntity) -> {
-            AttrGroupWithAttrsVo attrGroupWithAttrsVo = new AttrGroupWithAttrsVo();
-            BeanUtils.copyProperties(groupEntity, attrGroupWithAttrsVo);
             // 查询分组下的所有属性
             List<AttrEntity> attrs = attrService.getRelationAttr(groupEntity.getAttrGroupId());
+            // TODO 这里需要判空处理,attrs可能为空，导致前端出错，或者在前端判空。
+            AttrGroupWithAttrsVo attrGroupWithAttrsVo = new AttrGroupWithAttrsVo();
+            BeanUtils.copyProperties(groupEntity, attrGroupWithAttrsVo);
             attrGroupWithAttrsVo.setAttrs(attrs);
             return attrGroupWithAttrsVo;
         }).collect(Collectors.toList());
         return attrGroupWithAttrsVos;
-
     }
 
     /**

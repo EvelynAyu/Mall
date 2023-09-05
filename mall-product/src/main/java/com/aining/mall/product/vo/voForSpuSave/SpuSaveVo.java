@@ -33,11 +33,6 @@ public class SpuSaveVo {
   private List<BaseAttrs> baseAttrs;
 
   /**
-   * spu的优惠信息：对应sms_spu_bounds
-   */
-  private Bounds bounds;
-
-  /**
    * 当前spu对应的所有sku信息
    */
   private List<Skus> skus;

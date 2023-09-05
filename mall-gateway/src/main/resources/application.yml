@@ -37,6 +37,15 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*), /$\{segment}
 
+#          网关将与订单服务相关的请求转发给订单服务
+        - id: order_route
+#          负载均衡到订单服务
+          uri: lb://mall-order
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+
 #          仓库服务的路由
         - id: ware_route
           uri: lb://mall-ware

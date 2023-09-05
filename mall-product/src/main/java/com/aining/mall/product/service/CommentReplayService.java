@@ -1,9 +1,11 @@
 package com.aining.mall.product.service;
 
+import com.aining.mall.product.entity.SpuCommentEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.aining.common.utils.PageUtils;
 import com.aining.mall.product.entity.CommentReplayEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,7 @@ import java.util.Map;
 public interface CommentReplayService extends IService<CommentReplayEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    List<Long> getAllReply(Long commentId);
 }
 

@@ -3,7 +3,18 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.32.10:8848
+    alicloud:
+      access-key: LTAI5tAACcFVz6ymjh7wiAoC
+      secret-key: 3KS2Plea2yuCl9MsgkDipt2zTnM0i0
+      oss:
+        endpoint: oss-cn-shenzhen.aliyuncs.com
+        bucket: mall-lan
 
+      sms:
+        host: https://dfsns.market.alicloudapi.com
+        path: /data/send_sms
+        template_id: CST_ptdie100
+        appcode: 0166c67768074e639210e209a37a3eed
   application:
     name: mall-third-party
 server:

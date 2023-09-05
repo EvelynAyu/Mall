@@ -25,22 +25,4 @@ public class Skus {
    */
   private List<Attr> attr;
 
-  /**
-   * sku的优惠及满减信息：sms_sku_ladder
-   */
-  private int fullCount;
-  private BigDecimal discount;
-
-  private int countStatus;
-
-  /**
-   * sku的满减信息：sms_sku_full_reduction
-   */
-  private BigDecimal fullPrice;
-  private BigDecimal reducePrice;
-
-
-  private int priceStatus;
-  private List<MemberPrice> memberPrice;
-
 }

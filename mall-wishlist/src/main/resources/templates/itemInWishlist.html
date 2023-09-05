@@ -46,7 +46,7 @@
     <div class="one_sousuo">
         <div class="one_search_top">
             <div class="one_top_left">
-                <a href="http://cart.mall.com/cart.html" class="one_left_link">My Basket</a>
+                <a href="http://cart.mall.com/cart.html" class="one_left_link"> << Go to Basket</a>
             </div>
         </div>
         <div class="one_search_load">
@@ -65,12 +65,11 @@
         </div>
         <div class="One_ShopTop">
             <ul>
-                <li><input type="checkbox" class="allCheck"></li>
+                <li></li>
                 <li>Name</li>
                 <li>Price</li>
 <!--                <li>Count</li>-->
                 <li>Creator</li>
-<!--                <li>Delete</li>-->
             </ul>
         </div>
 
@@ -81,14 +80,17 @@
                     </div>
                     <div>
                         <ol>
-                            <li><input type="checkbox" th:attr="skuId=${wishlistItem.skuId}"></li>
+                            <li></li>
                             <li>
                                 <dt><img th:src="${wishlistItem.image}" alt=""></dt>
                                 <dd style="width: 300px;">
                                     <p>
                                         <span th:text="${wishlistItem.title}">TCL 55A950C 55英寸32核</span>
                                         <br/>
-                                        <span th:each="attr:${wishlistItem.skuAttrValues}" th:text="${attr}">尺码: 55时 超薄曲面 人工智能</span>
+                                        <span th:each="attr:${wishlistItem.skuAttrValues}">
+                                            <span th:text="${attr}" style="color: #777777">尺码: 55时 超薄曲面 人工智能</span>
+                                            <br th:if="${!attrStat.last}"/>
+                                        </span>
                                     </p>
                                 </dd>
                             </li>
@@ -98,6 +100,9 @@
 <!--                            <li>#</li>-->
                             <li>
                                 <p th:text="${wishlistItem.getCreateUserName()}"></p>
+                            </li>
+                            <li>
+                                <a th:href="|http://item.mall.com/${wishlistItem.getSkuId()}.html|" style="color: #e64346">Buy</a>
                             </li>
                             <li>
                                 <p class="deleteItemBtn" th:attr="skuId=${wishlistItem.skuId}, wishlistId=${wishlistItem.getWlId()}">delete</p>

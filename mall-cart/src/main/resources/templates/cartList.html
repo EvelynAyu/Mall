@@ -44,11 +44,11 @@
             <div class="one_top_left">
                 <a href="http://cart.mall.com/cart.html" class="one_left_link">Basket</a>
             </div>
-            <div class="one_top_right">
-                <input type="text" class="one_right_txt" placeholder="" onfocus="this.placeholder=''"
-                       onblur="this.placeholder='' ">
-                <input type="button" value="Search" class="one_right_btn">
-            </div>
+<!--            <div class="one_top_right">-->
+<!--                <input type="text" class="one_right_txt" placeholder="" onfocus="this.placeholder=''"-->
+<!--                       onblur="this.placeholder='' ">-->
+<!--                <input type="button" value="Search" class="one_right_btn">-->
+<!--            </div>-->
         </div>
         <div class="one_search_load" th:if="${session.loginUser == null}">
             <img src="/static/cart/img/shop_07.jpg" class="one_load_wraing">
@@ -94,7 +94,10 @@
                                     <p>
                                         <span th:text="${item.title}">TCL 55A950C 55英寸32核</span>
                                         <br/>
-                                        <span th:each="attr:${item.skuAttrValues}" th:text="${attr}">尺码: 55时 超薄曲面 人工智能</span>
+                                        <span th:each="attr:${item.skuAttrValues}">
+                                            <span th:text="${attr}" style="color: gray">尺码: 55时 超薄曲面 人工智能</span>
+                                            <br th:if="${!attrStat.last}"/>
+                                        </span>
                                     </p>
                                 </dd>
                             </li>

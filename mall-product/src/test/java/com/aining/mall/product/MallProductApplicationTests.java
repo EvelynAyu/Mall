@@ -5,6 +5,9 @@ import com.aining.mall.product.dao.SkuSaleAttrValueDao;
 import com.aining.mall.product.entity.BrandEntity;
 import com.aining.mall.product.service.BrandService;
 import com.aining.mall.product.service.CategoryService;
+import com.aining.mall.product.service.CommentReplayService;
+import com.aining.mall.product.service.SpuCommentService;
+import com.aining.mall.product.vo.CommentVo;
 import com.aining.mall.product.vo.voForItem.SkuItemSaleAttrVo;
 import com.aining.mall.product.vo.voForItem.SpuItemAttrGroupVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -51,6 +54,12 @@ public class MallProductApplicationTests {
     @Resource
     private AttrGroupDao attrGroupDao;
 
+    @Autowired
+    CommentReplayService commentReplayService;
+
+    @Autowired
+    SpuCommentService spuCommentService;
+
     @Test
     public void contextLoads() {
         BrandEntity brand = new BrandEntity();
@@ -91,6 +100,24 @@ public class MallProductApplicationTests {
     public void test() {
         List<SpuItemAttrGroupVo> attrGroupWithAttrsBySpuId = attrGroupDao.getAttrGroupWithAttrsBySpuId(11L, 225L);
         attrGroupWithAttrsBySpuId.forEach(System.out::println);
+    }
+
+    /**
+     * 测试递归
+     */
+    @Test
+    public void testGetAllReply(){
+        List<Long> allReply = commentReplayService.getAllReply(1L);
+        System.out.println("*****"+allReply.toString()+"******");
+    }
+
+    /**
+     * 测试获得商品回复vo
+     */
+    @Test
+    public void testGetSpuAllComment(){
+        List<CommentVo> spuAllComment = spuCommentService.getSpuAllComment(41L);
+        System.out.println(spuAllComment.toString());
     }
 
 

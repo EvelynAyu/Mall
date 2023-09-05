@@ -63,7 +63,7 @@ public class MyRabbitConfig {
         HashMap<String, Object> arguments = new HashMap<>();
         arguments.put("x-dead-letter-exchange", "stock-event-exchange");
         arguments.put("x-dead-letter-routing-key", "stock.release");
-        // 消息过期时间 2分钟
+        // 消息过期时间 10分钟
         arguments.put("x-message-ttl", TimeUnit.MINUTES.toMillis(10));
 
         Queue queue = new Queue("stock.delay.queue", true, false, false,arguments);

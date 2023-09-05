@@ -7,7 +7,6 @@ import com.aining.common.to.es.SkuESModel;
 import com.aining.common.utils.R;
 import com.aining.common.vo.SkuHasStockVo;
 import com.aining.mall.product.entity.*;
-import com.aining.mall.product.feign.CouponFeignService;
 import com.aining.mall.product.feign.SearchFeignService;
 import com.aining.mall.product.feign.WareFeignService;
 import com.aining.mall.product.service.*;
@@ -53,9 +52,6 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     SkuImagesService skuImagesService;
     @Autowired
     SkuSaleAttrValueService skuSaleAttrValueService;
-    // 远程调用
-    @Autowired
-    CouponFeignService couponFeignService;
 
     @Autowired
     BrandService brandService;
@@ -120,16 +116,6 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         }).collect(Collectors.toList());
         productAttrValueService.saveProductAttrValue(valueEntities);
 
-        // 5. 保存积分信息bounds
-        Bounds bounds = spuInfoVo.getBounds();
-        SpuBoundsTo spuBoundsTo = new SpuBoundsTo();
-        BeanUtils.copyProperties(bounds, spuBoundsTo);
-        spuBoundsTo.setSpuId(spuInfoEntity.getId());
-        R r = couponFeignService.saveSpuBounds(spuBoundsTo);
-        if(r.getCode() != 0){
-            log.error("远程保存spu积分信息失败");
-        }
-
         //6. 保存sku的信息
         List<Skus> skuVos = spuInfoVo.getSkus();
         // 6.1 Sku的基本信息：pms_sku_info
@@ -176,32 +162,6 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                 return skuSaleAttrValueEntity;
             }).collect(Collectors.toList());
             skuSaleAttrValueService.saveBatch(skuSaleAttrValueEntities);
-
-            /**
-             * 远程调用部分
-             */
-            // 5.4 sku bounds/coupon信息（涉及跨数据库:mall_sms -> sms_spu_bounds/sms_sku_ladder/sms_sku_full_reduction/sms_member_price
-            // 5.4.2 保存sku的满减信息
-            SkuReductionTo skuReductionTo = new SkuReductionTo();
-            skuReductionTo.setSkuId(skuId);
-            BeanUtils.copyProperties(skuVo, skuReductionTo);
-
-            // 从sku中拿到memberpriceList,拷贝memberprice。这里不用BeanUtils的原因是To和Do的memberPrice的泛型不一样，会导致拷贝失败
-            List<MemberPrice> memberPriceList = skuVo.getMemberPrice();
-            List<com.aining.common.to.MemberPrice> memberPriceToList = memberPriceList.stream().map((memberPrice) -> {
-                com.aining.common.to.MemberPrice memberPriceTo = new com.aining.common.to.MemberPrice();
-                BeanUtils.copyProperties(memberPrice, memberPriceTo);
-                return memberPriceTo;
-            }).collect(Collectors.toList());
-            skuReductionTo.setMemberPrice(memberPriceToList);
-
-            // 只有当有满减信息/满件优惠时才保存数据
-            if(skuReductionTo.getFullCount() > 0 || skuReductionTo.getFullPrice().compareTo(new BigDecimal("0")) == 1) {
-                R r1 = couponFeignService.saveSkuReduction(skuReductionTo);
-                if (r1.getCode() != 0) {
-                    log.error("远程保存sku满减信息失败");
-                }
-            }
         });
     }
 

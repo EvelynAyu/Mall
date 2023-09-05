@@ -1,441 +1,640 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="/static/item/scss/shop.css" />
-		<link rel="stylesheet" type="text/css" href="/static/item/scss/jd.css"/>
-		<link rel="stylesheet" href="/static/item/scss/header.css" />
-		<link rel="stylesheet" type="text/css" href="/static/item/bootstrap/css/bootstrap.css"/>
-	</head>
-	<body>
-		<div id="max">
-		<header>
-			<!--品牌官方网站-->
-					<div class="min">
-						<ul class="header_ul_left">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/static/item/scss/shop.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/item/scss/jd.css"/>
+    <link rel="stylesheet" href="/static/item/scss/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/item/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div id="max">
+    <header>
+        <!--品牌官方网站-->
+        <div class="min">
+            <ul class="header_ul_left">
 
-						</ul>
-						<ul class="header_ul_right">
-							<li class="glyphicon glyphicon-home"> <a href="http://mall.com" class="aa">Home</a></li>
-							<li><a href="/static/item/javascript:;" class="aa">My Order</a></li>
-							<li style="border: 0;">
-								<a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html"
-								   class="aa">Sign in</a>
-								<a th:if="${session.loginUser != null}">Hello, [[${session.loginUser.nickname}]]</a>
-							</li>
-							<li>
-								<a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html"
-								   style="color: red;">Register</a>
-							</li>
-						</ul>
-					</div>
-				</header>
-				<nav>
-				<div class="nav_min">
-					<div class="nav_top">
-						<div class="nav_top_two"><input type="text"/><button>Search</button></div>
-						<div class="nav_top_three"><a href="http://cart.mall.com/cart.html">My Basket</a><span class="glyphicon glyphicon-shopping-cart"></span></div>
-					</div>
+            </ul>
+            <ul class="header_ul_right">
+                <li class="glyphicon glyphicon-home"><a href="http://mall.com" class="aa">Home</a></li>
+                <li><a href="/static/item/javascript:;" class="aa">My Order</a></li>
+                <li style="border: 0;">
+                    <a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html"
+                       class="aa">Sign in</a>
+                    <a th:if="${session.loginUser != null}">Hello, [[${session.loginUser.nickname}]]</a>
+                </li>
+                <li>
+                    <a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html"
+                       style="color: red;">Register</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <nav>
+        <div class="nav_min">
+            <div class="nav_top">
+                <div class="nav_top_two"><input type="text"/>
+                    <button>Search</button>
+                </div>
+                <div class="nav_top_three"><a href="http://cart.mall.com/cart.html">My Basket</a><span
+                        class="glyphicon glyphicon-shopping-cart"></span></div>
+            </div>
 
-				</div>
-			</nav>
+        </div>
+    </nav>
+</div>
+<div class="crumb-wrap">
+    <div class="w">
+        <div class="crumb">
+            <div class="crumb-item">
+                <a href="/static/item/">Phone</a>
+            </div>
+            <div class="crumb-item sep">></div>
+            <div class="crumb-item">
+                <a href="/static/item/">Mobile Communication</a>
+            </div>
+            <div class="crumb-item sep">></div>
+            <div class="crumb-item">
+                <a href="/static/item/">Mobile Phone</a>
+            </div>
+            <div class="crumb-item sep">></div>
+            <div class="crumb-item" th:text="${item.info.getSkuName()}">
+                华为Mate 10
+            </div>
+        </div>
 
-				</div>
-
-
-			<div class="crumb-wrap">
-			<div class="w">
-				<div class="crumb">
-					<div class="crumb-item">
-						<a href="/static/item/">Phone</a>
-					</div>
-					<div class="crumb-item sep">></div>
-					<div class="crumb-item">
-						<a href="/static/item/">Mobile Communication</a>
-					</div>
-					<div class="crumb-item sep">></div>
-					<div class="crumb-item">
-						<a href="/static/item/">Mobile Phone</a>
-					</div>
-					<div class="crumb-item sep">></div>
-					<div class="crumb-item">
-						<div class="crumb-item-one">
-							华为 (HUAWEI)
-							<img src="/static/item/img/4a79b87a68623d4e8a73aff3e25fa99b.png" alt="" class="img" />
-							<div class="crumb-item-two ">
-								<div class="crumb-item-con clear">
-									<ul class="con-ul">
-										<li>
-											<img src="/static/item/img/5825a5a6Nde8ecb75.jpg" alt="" />
-										</li>
-										<li>
-											<p>
-												荣耀8青春版 全网通标配 3GB+32GB 幻海蓝
-											</p>
-											<p>
-												￥1099.00
-											</p>
-										</li>
-									</ul>
-									<ul class="con-ul">
-										<li>
-											<img src="/static/item/img/5919637aN271a1301.jpg" alt="" />
-										</li>
-										<li>
-											<p>
-												荣耀8青春版 全网通标配 3GB+32GB 幻海蓝
-											</p>
-											<p>
-												￥1099.00
-											</p>
-										</li>
-									</ul>
-									<ul class="con-ul">
-										<li>
-											<img src="/static/item/img/599a806bN9d829c1c.jpg" alt="" />
-										</li>
-										<li>
-											<p>
-												荣耀8青春版 全网通标配 3GB+32GB 幻海蓝
-											</p>
-											<p>
-												￥1099.00
-											</p>
-										</li>
-									</ul>
-								</div>
-								<div class="crumb-item-cons clear">
-									<ul>
-										<li>华为(huawei)</li>
-										<li>小米(xiaomi)</li>
-										<li>APPle</li>
-										<li>魅族(meizu)</li>
-										<li>锤子</li>
-
-									</ul>
-									<ul>
-										<li>三星</li>
-										<li>vivo</li>
-										<li>飞利浦</li>
-										<li>360</li>
-										<li>更多>></li>
-
-									</ul>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-					<div class="crumb-item sep">></div>
-					<div class="crumb-item" th:text="${item.info.getSkuName()}">
-						华为Mate 10
-					</div>
-				</div>
-
-			</div>
-		</div>
+    </div>
+</div>
 <div class="Shop">
-		<div class="box">
-			<div class="box-one ">
-				<div class="boxx">
-					<div class="imgbox">
-						<div class="probox">
-							<img class="img1" alt="" th:src="${item.info.skuDefaultImg}">
-							<div class="hoverbox"></div>
-						</div>
-						<div class="showbox">
-							<img class="img1" alt="" th:src="${item.info.skuDefaultImg}">
-						</div>
-					</div>
-					<div class="box-lh">
-						<div class="box-lh-one">
-							<ul>
-								<li th:each="img : ${item.images}" th:if="${!#strings.isEmpty(img.imgUrl)}"><img th:src="${img.imgUrl}"/></li>
-							</ul>
-						</div>
-						<div id="left">
-							< </div>
-								<div id="right">
-									>
-								</div>
-						</div>
+    <div class="box">
+        <div class="box-one ">
+            <div class="boxx">
+                <div class="imgbox">
+                    <div class="probox">
+                        <img class="img1" alt="" th:src="${item.info.skuDefaultImg}">
+                        <div class="hoverbox"></div>
+                    </div>
+                    <div class="showbox">
+                        <img class="img1" alt="" th:src="${item.info.skuDefaultImg}">
+                    </div>
+                </div>
+                <div class="box-lh">
+                    <div class="box-lh-one">
+                        <ul>
+                            <li th:each="img : ${item.images}" th:if="${!#strings.isEmpty(img.imgUrl)}"><img
+                                    th:src="${img.imgUrl}"/></li>
+                        </ul>
+                    </div>
+                    <div id="left">
+                        <
+                    </div>
+                    <div id="right">
+                        >
+                    </div>
+                </div>
 
-					</div>
-					<div class="box-two">
-						<div class="box-name" th:text="${item.info.skuTitle}">
-							华为 HUAWEI Mate 10 6GB+128GB 亮黑色 移动联通电信4G手机 双卡双待
-						</div>
-						<div class="box-hide" th:text="${item.info.skuSubtitle}">预订用户预计11月30日左右陆续发货！麒麟970芯片！AI智能拍照！
-							<a href="/static/item/"><u></u></a>
-						</div>
+            </div>
+            <div class="box-two">
+                <div class="box-name" th:text="${item.info.skuTitle}">
+                    华为 HUAWEI Mate 10 6GB+128GB 亮黑色 移动联通电信4G手机 双卡双待
+                </div>
+                <div class="box-hide" th:text="${item.info.skuSubtitle}">预订用户预计11月30日左右陆续发货！麒麟970芯片！AI智能拍照！
+                    <a href="/static/item/"><u></u></a>
+                </div>
 
-						<div class="box-summary clear">
-							<ul>
-								<li>Price</li>
-								<li>
-									<span>￥</span>
-									<span th:text="${#numbers.formatDecimal(item.info.price,3,2)}">4499.00</span>
-								</li>
-								<li>
+                <div class="box-summary clear">
+                    <ul>
+                        <li>Price</li>
+                        <li>
+                            <span>￥</span>
+                            <span th:text="${#numbers.formatDecimal(item.info.price,3,2)}">4499.00</span>
+                        </li>
+                        <li>
 
-								</li>
-								<li>
-									<a href="/static/item/">
+                        </li>
+                        <li>
+                            <a href="/static/item/">
 
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div class="box-stock">
-							<ul class="box-ul">
-								<li>Ship to</li>
-								<li class="box-stock-li">
-									<div class="box-stock-one">
-										London
-										<img src="/static/item/img/4a79b87a68623d4e8a73aff3e25fa99b.png" alt="" class="img" />
-									</div>
-									<div class="box-stock-two">
-										<dl>
-											<dt>
-												<a>New address</a>
-												<img src="/static/item/img/4a79b87a68623d4e8a73aff3e25fa99b.png" alt="" class="box-stock-two-img"/>
-											</dt>
-											<dd>
-												<div class="box-stock-dd">
-													<div class="box-stock-top">
-<!--														<div class="box-stock-div">Birmingham</div>-->
-														<div class="box-stock-div">Birmingham</div>
-														<div class="box-stock-div">Edinburgh</div>
-													</div>
-												</div>
-											</dd>
-										</dl>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box-stock">
+                    <ul class="box-ul">
+                        <li>Ship to</li>
+                        <li class="box-stock-li">
+                            <div class="box-stock-one">
+                                London
+                                <img src="/static/item/img/4a79b87a68623d4e8a73aff3e25fa99b.png" alt="" class="img"/>
+                            </div>
+                            <div class="box-stock-two">
+                                <dl>
+                                    <dt>
+                                        <a>New address</a>
+                                        <img src="/static/item/img/4a79b87a68623d4e8a73aff3e25fa99b.png" alt=""
+                                             class="box-stock-two-img"/>
+                                    </dt>
+                                    <dd>
+                                        <div class="box-stock-dd">
+                                            <div class="box-stock-top">
+                                                <!--														<div class="box-stock-div">Birmingham</div>-->
+                                                <div class="box-stock-div">Birmingham</div>
+                                                <div class="box-stock-div">Edinburgh</div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
 
-									</div>
+                            </div>
 
-								</li>
-								<li>
-									<span th:text="${item.hasStock?'On stock':'Out of stock'}">无货</span>
-								</li>
-							</ul>
-						</div>
-						<div class="box-attr-3">
-							<div class="box-attr clear" th:each="attr : ${item.saleAttr}">
-								<dl>
-									<dt>selsct [[${attr.attrName}]]</dt>
-									<dd th:each="val : ${attr.attrValues}">
-										<a th:attr=" class=${#lists.contains(#strings.listSplit(val.skuIds,','),item.info.skuId.toString())
+                        </li>
+                        <li>
+                            <span th:text="${item.hasStock?'On stock':'Out of stock'}">无货</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box-attr-3">
+                    <div class="box-attr clear" th:each="attr : ${item.saleAttr}">
+                        <dl>
+                            <dt>selsct [[${attr.attrName}]]</dt>
+                            <dd th:each="val : ${attr.attrValues}">
+                                <a th:attr=" class=${#lists.contains(#strings.listSplit(val.skuIds,','),item.info.skuId.toString())
                                    ? 'sku_attr_value checked': 'sku_attr_value'}, skus=${val.skuIds} "
-										>
-											[[${val.attrValue}]]
-										</a>
-									</dd>
-								</dl>
-							</div>
-						</div>
+                                >
+                                    [[${val.attrValue}]]
+                                </a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
 
-						<div class="box-btns clear">
-							<div class="box-btns-one">
-								<input type="text" name="" id="productNum" value="1"/>
-								<div class="box-btns-one1">
-									<div>
-										<button id="jia">
-											+
-										</button>
-									</div>
-									<div>
-										<button id="jian">
-											-
-										</button>
-									</div>
-								</div>
-							</div>
-							<div class="box-btns-two">
-								<a class="addToCart" href="#" th:attr="skuId=${item.info.skuId}">
-									Add to Basket
-								</a>
-							</div>
-<!--							点击加入心愿单，出现心愿单选项弹窗-->
-							<div class="box-btns-three">
-								<a th:href="|http://wishlist.mall.com/getAllWishlists/${item.info.getSkuId()}|">Add to Wishlist</a>
-							</div>
-						</div>
-					</div>
+                <div class="box-btns clear">
+                    <div class="box-btns-one">
+                        <input type="text" name="" id="productNum" value="1"/>
+                        <div class="box-btns-one1">
+                            <div>
+                                <button id="jia">
+                                    +
+                                </button>
+                            </div>
+                            <div>
+                                <button id="jian">
+                                    -
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-btns-two">
+                        <a class="addToCart" href="#" th:attr="skuId=${item.info.skuId}">
+                            Add to Basket
+                        </a>
+                    </div>
+                    <!--							点击加入心愿单，出现心愿单选项弹窗-->
+                    <div class="box-btns-three">
+                        <a th:href="|http://wishlist.mall.com/getAllWishlists/${item.info.getSkuId()}|"
+                           style="float: left; height: 46px;line-height: 46px;padding: 0 26px;font-size: 18px;color:white;background: #f78f34db;cursor:hand">
+                            Add to Wishlist
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-				</div>
-			</div>
+        </div>
+    </div>
+    <div class="ShopXiangqing">
+        <div class="allLeft">
+            <!--火热预约-->
+            <div class="huoreyuyue">
+                <h3>Advertisement</h3>
+            </div>
+            <div class="dangeshopxingqing">
+                <ul class="shopdange">
+                    <li>
+                        <a href="/static/item/##"><img src="/static/item/img/5a0afeddNb34732af.jpg"/></a>
+                        <p>
+                            <a href="/static/item/##">OPPO Find X3 Lite 5G - 8GB RAM and 128GB Storage SIM Free
+                                Smartphone (6.4 inch, 64MP Quad Camera, Dual SIM) - Black</a>
+                        </p>
+                        <p><strong class="J-p-20015341974">￥1800</strong></p>
+                    </li>
+                    <li>
+                        <a href="/static/item/##"><img src="/static/item/img/5a12873eN41754123.jpg"/></a>
+                        <p>
+                            <a target="_blank"
+                               title="Shark Cordless Stick Vacuum Cleaner [IZ300UK] Anti Hair Wrap, PowerFins, Single Battery, Black & Copper"
+                               href="/static/item///item.jd.com/20348283521.html">Shark Cordless Stick Vacuum Cleaner
+                                [IZ300UK] Anti Hair Wrap, PowerFins, Single Battery, Black & Copper</a>
+                        </p>
+                        <p><strong class="J-p-20348283521">￥2689.00</strong></p>
+                    </li>
+                    <li>
+                        <a href="/static/item/##"><img src="/static/item/img/59ec0131Nf239df75.jpg"/></a>
+                        <p>
+                            <a target="_blank" title="Apple iPhone 14 Pro Max (128 GB) - Space Black"
+                               href="/static/item///item.jd.com/16683419775.html">Apple iPhone 14 Pro Max (128 GB) -
+                                Space Black</a>
+                        </p>
+                        <p><strong class="J-p-16683419775">￥9499.00</strong></p>
+                    </li>
+                    <li>
+                        <a href="/static/item/##"><img src="/static/item/img/59015444N27317512.jpg"/></a>
+                        <p>
+                            <a target="_blank"
+                               title="Apple Watch SE (2nd generation) (GPS, 40mm) Smart watch - Starlight Aluminium Case with Starlight Sport Band - Regular. Fitness & Sleep Tracker, Crash Detection, Heart Rate Monitor, Water Resistant"
+                               href="/static/item///item.jd.com/12187770381.html">Apple Watch SE (2nd generation) (GPS,
+                                40mm) Smart watch - Starlight Aluminium Case with Starlight Sport Band - Regular.
+                                Fitness & Sleep Tracker, Crash Detection, Heart Rate Monitor, Water Resistant</a>
+                        </p>
+                        <p><strong class="J-p-12187770381">￥2229.00</strong></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="dangeshopxingqing">
+                <ul class="shopdange">
+                    <li>
+                        <a href="/static/item/##"><img src="/static/item/img/59e55e01N369f98f2.jpg"/></a>
+                        <p>
+                            <a target="_blank"
+                               title="Introducing Echo Pop | Full sound compact Wi-Fi and Bluetooth smart speaker with Alexa | Glacier White"
+                               href="/static/item///item.jd.com/17931625443.html">Introducing Echo Pop | Full sound
+                                compact Wi-Fi and Bluetooth smart speaker with Alexa | Glacier White</a>
+                        <p><strong class="J-p-17931625443">￥399.00</strong></p>
+                    </li>
+                    <li>
+                        <a href="/static/item/##"><img src="/static/item/img/584fcc3eNdb0ab94c.jpg"/></a>
+                        <p>
+                            <a target="_blank" title="Apple AirPods Pro, (2nd generation) Wireless, White"
+                               href="/static/item///item.jd.com/3749093.html">Apple AirPods Pro, (2nd generation),
+                                Wireless, White</a>
+                        </p>
+                        <p><strong class="J-p-3749093">￥2099.00</strong></p>
+                    </li>
+                    <li>
+                        <!--shopjieshao-->
+                        <a href="/static/item/##"><img src="/static/item/img/59eb0df9Nd66d7585.jpg"/></a>
+                        <p>
+                            <a target="_blank"
+                               title="Introducing Amazon Fire Max 11 tablet, our most powerful tablet yet, vivid 11 display, octa-core processor, 4 GB RAM, 14-hr battery life, 64 GB, Grey, with Ads"
+                               href="/static/item///item.jd.com/12306211773.html">Introducing Amazon Fire Max 11 tablet,
+                                our most powerful tablet yet, vivid 11" display, octa-core processor, 4 GB RAM, 14-hr
+                                battery life, 64 GB, Grey, with Ads</a>
+                        </p>
+                        <p><strong class="J-p-12306211773">￥4999.00</strong></p>
+                    </li>
+                    <li>
+                        <a href="/static/item/##"><img src="/static/item/img/5a002ba3N126c2f73.jpg"/></a>
+                        <p>
+                            <a target="_blank"
+                               title="Noorio B200 Security Camera Wireless Outdoor, 1080p Home Security Camera, Wire-Free Battery Powered WiFi Camera, Color Night Vision, AI Motion Detection, Work with Alexa, Set up in Minutes"
+                               href="/static/item///item.jd.com/12187770381.html">Noorio B200 Security Camera Wireless
+                                Outdoor, 1080p Home Security Camera, Wire-Free Battery Powered WiFi Camera, Color Night
+                                Vision, AI Motion Detection, Work with Alexa, Set up in Minutes</a>
+                        </p>
+                        <p><strong class="J-p-12187770381">￥899.00</strong></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--右边部分：商品介绍/规格与包装/评论-->
+        <div class="allquanbushop">
+            <ul class="shopjieshao">
+                <li class="jieshoa" style="background: #e4393c;">
+                    <a style="color: white;">Product introduction</a>
+                </li>
+                <li class="baozhuang">
+                    <!--							<a href="/static/item/##">规格与包装</a>-->
+                    <a>Technical details</a>
+                </li>
+                <li class="pingjia">
+                    <a>Comments</a>
+                </li>
+            </ul>
 
-			<div class="ShopXiangqing">
-				<div class="allLeft">
-					<!--火热预约-->
-					<div class="huoreyuyue">
-						<h3>Advertisement</h3>
-					</div>
-					<div class="dangeshopxingqing">
-						<ul class="shopdange">
-							<li>
-								<a href="/static/item/##"><img src="/static/item/img/5a0afeddNb34732af.jpg" /></a>
-								<p>
-									<a href="/static/item/##">OPPO Find X3 Lite 5G - 8GB RAM and 128GB Storage SIM Free Smartphone (6.4 inch, 64MP Quad Camera, Dual SIM) - Black</a>
-								</p>
-								<p><strong class="J-p-20015341974">￥1800</strong></p>
-							</li>
-							<li>
-								<a href="/static/item/##"><img src="/static/item/img/5a12873eN41754123.jpg" /></a>
-								<p>
-									<a target="_blank" title="Shark Cordless Stick Vacuum Cleaner [IZ300UK] Anti Hair Wrap, PowerFins, Single Battery, Black & Copper" href="/static/item///item.jd.com/20348283521.html">Shark Cordless Stick Vacuum Cleaner [IZ300UK] Anti Hair Wrap, PowerFins, Single Battery, Black & Copper</a>
-								</p>
-								<p><strong class="J-p-20348283521">￥2689.00</strong></p>
-							</li>
-							<li>
-								<a href="/static/item/##"><img src="/static/item/img/59ec0131Nf239df75.jpg" /></a>
-								<p>
-									<a target="_blank" title="Apple iPhone 14 Pro Max (128 GB) - Space Black" href="/static/item///item.jd.com/16683419775.html">Apple iPhone 14 Pro Max (128 GB) - Space Black</a>
-								</p>
-								<p><strong class="J-p-16683419775">￥9499.00</strong></p>
-							</li>
-							<li>
-								<a href="/static/item/##"><img src="/static/item/img/59015444N27317512.jpg" /></a>
-								<p>
-									<a target="_blank" title="Apple Watch SE (2nd generation) (GPS, 40mm) Smart watch - Starlight Aluminium Case with Starlight Sport Band - Regular. Fitness & Sleep Tracker, Crash Detection, Heart Rate Monitor, Water Resistant" href="/static/item///item.jd.com/12187770381.html">Apple Watch SE (2nd generation) (GPS, 40mm) Smart watch - Starlight Aluminium Case with Starlight Sport Band - Regular. Fitness & Sleep Tracker, Crash Detection, Heart Rate Monitor, Water Resistant</a>
-								</p>
-								<p><strong class="J-p-12187770381">￥2229.00</strong></p>
-							</li>
-						</ul>
-					</div>
-					<div class="dangeshopxingqing">
-						<ul class="shopdange">
-							<li>
-								<a href="/static/item/##"><img src="/static/item/img/59e55e01N369f98f2.jpg" /></a>
-								<p>
-									<a target="_blank" title="Introducing Echo Pop | Full sound compact Wi-Fi and Bluetooth smart speaker with Alexa | Glacier White" href="/static/item///item.jd.com/17931625443.html">Introducing Echo Pop | Full sound compact Wi-Fi and Bluetooth smart speaker with Alexa | Glacier White</a>
-									<p><strong class="J-p-17931625443">￥399.00</strong></p>
-							</li>
-							<li>
-								<a href="/static/item/##"><img src="/static/item/img/584fcc3eNdb0ab94c.jpg" /></a>
-								<p>
-									<a target="_blank" title="Apple AirPods Pro, (2nd generation) Wireless, White" href="/static/item///item.jd.com/3749093.html">Apple AirPods Pro, (2nd generation), Wireless, White</a>
-								</p>
-								<p><strong class="J-p-3749093">￥2099.00</strong></p>
-							</li>
-							<li>
-								<!--shopjieshao-->
-								<a href="/static/item/##"><img src="/static/item/img/59eb0df9Nd66d7585.jpg" /></a>
-								<p>
-									<a target="_blank" title="Introducing Amazon Fire Max 11 tablet, our most powerful tablet yet, vivid 11 display, octa-core processor, 4 GB RAM, 14-hr battery life, 64 GB, Grey, with Ads" href="/static/item///item.jd.com/12306211773.html">Introducing Amazon Fire Max 11 tablet, our most powerful tablet yet, vivid 11" display, octa-core processor, 4 GB RAM, 14-hr battery life, 64 GB, Grey, with Ads</a>
-								</p>
-								<p><strong class="J-p-12306211773">￥4999.00</strong></p>
-							</li>
-							<li>
-								<a href="/static/item/##"><img src="/static/item/img/5a002ba3N126c2f73.jpg" /></a>
-								<p>
-									<a target="_blank" title="Noorio B200 Security Camera Wireless Outdoor, 1080p Home Security Camera, Wire-Free Battery Powered WiFi Camera, Color Night Vision, AI Motion Detection, Work with Alexa, Set up in Minutes" href="/static/item///item.jd.com/12187770381.html">Noorio B200 Security Camera Wireless Outdoor, 1080p Home Security Camera, Wire-Free Battery Powered WiFi Camera, Color Night Vision, AI Motion Detection, Work with Alexa, Set up in Minutes</a>
-								</p>
-								<p><strong class="J-p-12187770381">￥899.00</strong></p>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!--商品介绍-->
-				<div class="allquanbushop">
-					<ul class="shopjieshao">
-						<li class="jieshoa" style="background: #e4393c;">
-							<a style="color: white;">Product introduction</a>
-						</li>
-						<li class="baozhuang">
-<!--							<a href="/static/item/##">规格与包装</a>-->
-							<a>Technical details</a>
-						</li>
-						<li class="pingjia">
-							<a href="/static/item/##">Comments</a>
-						</li>
-					</ul>
-					<ul class="shopjieshaos posi" style="display: none;">
-						<li class="jieshoa" style="background: #e4393c;">
-							<a href="/static/item/#li1" style="color: white;">Product introduction</a>
-						</li>
-						<li class="baozhuang">
-							<a href="/static/item/#li2">Technical details</a>
-						</li>
-						<li class="pingjia">
-							<a href="/static/item/#li4">Comments</a>
-						</li>
-					</ul>
+            <!--商品介绍-->
+            <ul class="shopjieshaos posi" style="display: none;">
+                <li class="jieshoa" style="background: #e4393c;">
+                    <a href="/static/item/#li1" style="color: white;">Product introduction</a>
+                </li>
+                <li class="baozhuang">
+                    <a href="/static/item/#li2">Technical details</a>
+                </li>
+                <li class="pingjia">
+                    <a href="/static/item/#li4">Comments</a>
+                </li>
+            </ul>
 
-					<!--商品详情-->
-					<div class="huawei">
-						<ul class="xuanxiangka">
-							<li class="jieshoa actives" id="li1">
-								<div class="shanpinsssss">
-									<img class="xiaoguo" th:src="${descp}"
-										 th:each="descp : ${#strings.listSplit(item.desc.decript,',')}"/>
-								</div>
-							</li>
-							<li class="baozhuang actives" id="li2">
-								<div class="guiGebox">
-									<div class="guiGe" th:each="group : ${item.groupAttrs}">
-										<h3 th:text="${group.groupName}">主体</h3>
-										<dl>
-											<div th:each="attr : ${group.attrs}">
-												<dt th:text="${attr.attrName}">Brand</dt>
-												<dd th:text="${attr.attrValue}">华为(HUAWEI)</dd>
-											</div>
-										</dl>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
+            <!--商品详情-->
+            <div class="huawei">
+                <ul class="xuanxiangka">
+                    <li class="jieshoa actives" id="li1">
+                        <div class="shanpinsssss">
+                            <img class="xiaoguo" th:src="${descp}"
+                                 th:each="descp : ${#strings.listSplit(item.desc.decript,',')}"/>
+                        </div>
+                    </li>
+                    <li class="baozhuang actives" id="li2">
+                        <div class="guiGebox">
+                            <div class="guiGe" th:each="group : ${item.groupAttrs}">
+                                <h3 th:text="${group.groupName}">主体</h3>
+                                <dl>
+                                    <div th:each="attr : ${group.attrs}">
+                                        <dt th:text="${attr.attrName}">Brand</dt>
+                                        <dd th:text="${attr.attrValue}">华为(HUAWEI)</dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 使用Thymeleaf遍历显示评论列表 -->
+                    <li class="PINgjia actives" id="li4">
+                        <div class="h3">
+                            <h3>All Comments</h3>
+                            <!--发表评价-->
+                            <button id="openModalBtn">Write a product review</button>
+                        </div>
+                        <!--显示所有评价-->
+                        <div class="comment" th:each="spuComment : ${spuComments}" >
+                            <div class="left">
+                                <!-- 用户名称 -->
+                                <p style="margin-left: 10px;margin-top: 10px; font-size: 15px;color: cornflowerblue" th:text="${spuComment.getMemberNickName()}">John</p>
+<!--                                <div class="photo">-->
+<!--                                    <img th:src="${spuComment.getResources()}" alt="评论照片">-->
+<!--                                </div>-->
+                            </div>
+                            <div class="right" style="font-size: 15px">
+                                <!-- 评价内容 -->
+                                <p style="margin-left: 10px"><span th:text="${spuComment.getContent()}">这是一款很不错的商品，质量很好。</span>
+                                    <button class="reply-button" style="border: none; background: none; font-weight: bold; text-decoration: underline; cursor: pointer; color: darkgray;">reply</button>
+                                </p>
+                                <!--时间-->
+                                <p th:text="${spuComment.getCreateTime()}"
+                                   style="color: gray; font-size: 12px;margin-left: 10px; margin-top: 1px"></p>
+                                <hr />
+                                <!-- 回复输入框和提交按钮 -->
+                                <div class="reply-form" style="display: none;">
+                                    <!-- 主评论ID，为隐藏字段 -->
+                                    <input type="hidden" class="comment-id" th:value="${spuComment.getId()}" />
+                                    <textarea class="reply-textarea" rows="3" placeholder="Write a review..."
+                                              style="width: 95%;height: 60px;border: 1px solid #ccc;margin-top: 1px;padding: 5px;margin-left: 10px;margin-right: 10px" required></textarea>
+                                    <button class="submit-button"
+                                            style="background-color: cornflowerblue;color: #fff;border: none;padding: 5px 10px;cursor: pointer;margin-left: 10px; margin-bottom: 10px">submit</button>
+                                </div>
 
-	<script src="/static/item/js/jquery1.9.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/item/js/js.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript"></script>
+                                <!--子评论区-->
+                                <div class="subReply" th:each="commentReply : ${spuComment.getCommentReplyList()}"
+                                     style="width: 90%;  margin-left: 10px;margin-bottom: 10px">
+                                    <p>
+                                        <span th:text="${commentReply.getMemberNickName()} + ' replies to ' + ${commentReply.getReplyToWhom()} + ': '" style="display: inline; color: cornflowerblue"></span>
+                                        <span th:text="${commentReply.getContent()}" style="display: inline;"></span>
 
-	<script>
-		$(".sku_attr_value").click(function () {
-			// 1、点击的元素添加上自定义的属性
-			let skus = new Array();
-			let curr = $(this).attr("skus").split(",");
+                                        <!--每个子回复对应的reply按钮-->
+                                        <button class="subReply-button" style="border: none; background: none; font-weight: bold; text-decoration: underline; cursor: pointer; color: darkgray;">reply</button>
+                                    </p>
+                                    <p th:text="${commentReply.getCreateTime()}"
+                                       style="color: gray; font-size: 12px"></p>
 
-			$(this).parent().parent().find(".sku_attr_value").removeClass("checked");
-			$(this).addClass("checked");
-			changeCheckedStyle();
+                                    <!--子评论的回复输入框和提交按钮-->
+                                    <div class="subReply-form" style="display: none;">
+                                        <input type="hidden" class="subReply-id" th:value="${commentReply.getId()}" />
+                                        <textarea class="subReply-textarea" rows="3" placeholder="Write a review..." style="width: 95%;height: 60px;border: 1px solid #ccc;margin-top: 1px;padding: 5px;margin-right: 10px" required></textarea>
+                                        <button class="submit-button"
+                                                style="background-color: cornflowerblue;color: #fff;border: none;padding: 5px 10px;cursor: pointer; margin-bottom: 10px">submit</button>
+                                    </div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 评价框模态弹出层 -->
+                        <div id="modal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" id="closeModalBtn">&times;</span>
+                                <h2>Write a product review</h2>
+                                <form id="commentForm" method="post">
+                                    <!-- 添加隐藏的表单字段传递参数 -->
+                                    <input type="hidden" name="spuId" th:value="${item.getInfo().getSpuId()}" />
+                                    <input type="hidden" name="commentType" value="0" />
+                                    <textarea id="commentText" name="content" placeholder="Comment..." required></textarea>
+<!--                                    <input type="file" id="commentImage" accept="image/*" accept-language="EN">-->
+                                    <button type="submit" style="margin-top: 10px;">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 
-			$("a[class='sku_attr_value checked']").each(function () {
-				skus.push($(this).attr("skus").split(","));
-			});
+<script src="/static/item/js/jquery1.9.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/item/js/js.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript"></script>
 
-			let filterEle = skus[0];
-			for (let i = 1; i < skus.length; i++) {
-				filterEle = $(filterEle).filter(skus[i])[0];
-			}
+<script>
+    $(".sku_attr_value").click(function () {
+        // 1、点击的元素添加上自定义的属性
+        let skus = new Array();
+        let curr = $(this).attr("skus").split(",");
 
-			location.href = "http://item.mall.com/" + filterEle + ".html";
+        $(this).parent().parent().find(".sku_attr_value").removeClass("checked");
+        $(this).addClass("checked");
+        changeCheckedStyle();
 
-			return false;
-		});
-		$(function () {
-			changeCheckedStyle();
-		});
+        $("a[class='sku_attr_value checked']").each(function () {
+            skus.push($(this).attr("skus").split(","));
+        });
 
-		function changeCheckedStyle() {
-			$(".sku_attr_value").parent().css({"border": "solid 1px #ccc"});
-			$("a[class='sku_attr_value checked']").parent().css({"border": "solid 1px red"});
-		};
+        let filterEle = skus[0];
+        for (let i = 1; i < skus.length; i++) {
+            filterEle = $(filterEle).filter(skus[i])[0];
+        }
 
-		$(".addToCart").click(function () {
-			let skuId = $(this).attr("skuId");
-			let num = $("#productNum").val();
-			location.href = "http://cart.mall.com/addCartItem?skuId=" + skuId + "&num=" + num;
-			return false;
-		});
-	</script>
+        location.href = "http://item.mall.com/" + filterEle + ".html";
+
+        return false;
+    });
+    $(function () {
+        changeCheckedStyle();
+    });
+
+    function changeCheckedStyle() {
+        $(".sku_attr_value").parent().css({"border": "solid 1px #ccc"});
+        $("a[class='sku_attr_value checked']").parent().css({"border": "solid 1px red"});
+    };
+
+    $(".addToCart").click(function () {
+        let skuId = $(this).attr("skuId");
+        let num = $("#productNum").val();
+        location.href = "http://cart.mall.com/addCartItem?skuId=" + skuId + "&num=" + num;
+        return false;
+    });
+
+    // 获取模态框和按钮的引用
+    var modal = document.getElementById("modal");
+    var openModalBtn = document.getElementById("openModalBtn");
+    var closeModalBtn = document.getElementById("closeModalBtn");
+    var commentForm = document.getElementById("commentForm");
+
+    // 当用户点击 "发表评价" 按钮时，显示模态框
+    openModalBtn.addEventListener("click", function () {
+        modal.style.display = "block";
+    });
+
+    // 当用户点击关闭按钮时，隐藏模态框
+    closeModalBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // 当用户点击模态框外部时，也隐藏模态框
+    window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // 当用户提交评价时，可以在此处编写处理评价的逻辑
+    commentForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // 阻止表单提交
+        // 获取表单数据
+        var spuId = document.getElementsByName("spuId")[0].value;
+        var content = document.getElementById("commentText").value;
+        var commentType = document.getElementsByName("commentType")[0].value;
+
+        // 创建XMLHttpRequest对象
+        var xhr = new XMLHttpRequest();
+
+        // 配置POST请求，将数据发送到后端接口
+        xhr.open("POST", "/submitComment", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // 创建请求体数据，将表单数据编码成URL参数
+        var formData = "spuId=" + encodeURIComponent(spuId) +
+            "&content=" + encodeURIComponent(content) +
+            "&commentType=" + encodeURIComponent(commentType);
+
+        // 监听请求状态变化
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // 请求成功，评论已提交
+                    console.log("Comment submitted successfully!");
+                    // 隐藏模态框
+                    var modal = document.getElementById("modal");
+                    modal.style.display = "none";
+                    // 清除表单数据
+                    commentForm.reset();
+                } else {
+                    // 请求失败，处理错误
+                    console.error("Error submitting comment:", xhr.status, xhr.statusText);
+                }
+            }
+        };
+        // 发送POST请求，将表单数据作为请求体发送
+        xhr.send(formData);
+    });
+
+    // 获取所有的reply按钮
+    var replyButtons = document.querySelectorAll('.reply-button');
+
+    // 遍历每个reply按钮并添加点击事件监听器
+    replyButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            // 找到当前评论下方的回复输入框和提交按钮
+            var replyForm = button.closest('.right').querySelector('.reply-form');
+
+            // 显示回复输入框和提交按钮
+            replyForm.style.display = 'block';
+
+            // 添加提交按钮的点击事件监听器
+            var submitButton = replyForm.querySelector('.submit-button');
+            submitButton.addEventListener('click', function () {
+                // 获取评论ID和回复内容
+                var commentId = replyForm.querySelector('.comment-id').value;
+                var content = replyForm.querySelector('.reply-textarea').value;
+                // 向后端发送数据（使用fetch或其他方法）
+                fetch('/submitReply', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        commentId: commentId,
+                        content: content,
+                        commentType: 1,
+                    }),
+                })
+                    .then(function(response) {
+                        // 处理响应，例如显示成功消息或刷新页面
+                        if (response.ok) {
+                            // 隐藏回复输入框和提交按钮
+                            replyForm.style.display = 'none';
+                            // 可以根据后端返回的响应进行相应的处理
+                        }
+                    })
+                    .catch(function(error) {
+                        // 处理错误，例如显示错误消息
+                        console.error('Error:', error);
+                    });
+
+                // 隐藏回复输入框和提交按钮
+                // replyForm.style.display = 'none';
+            });
+        });
+    });
+
+    // 获取所有的subreply按钮
+    var subReplyButtons = document.querySelectorAll('.subReply-button');
+
+    // 遍历每个reply按钮并添加点击事件监听器
+    subReplyButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            // 找到当前评论下方的回复输入框和提交按钮
+            var subReplyForm = button.closest('.subReply').querySelector('.subReply-form');
+
+            // 显示回复输入框和提交按钮
+            subReplyForm.style.display = 'block';
+
+            // 添加提交按钮的点击事件监听器
+            var submitButton = subReplyForm.querySelector('.submit-button');
+            submitButton.addEventListener('click', function () {
+                // 获取子评论的id和内容
+                var commentId = subReplyForm.querySelector('.subReply-id').value;
+                var content = subReplyForm.querySelector('.subReply-textarea').value;
+
+                // 向后端发送数据（使用fetch或其他方法）
+                fetch('/submitReply', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        commentId: commentId,
+                        content: content,
+                        commentType: 1,
+                    }),
+                })
+                    .then(function(response) {
+                        // 处理响应，例如显示成功消息或刷新页面
+                        if (response.ok) {
+                            // 隐藏回复输入框和提交按钮
+                            subReplyForm.style.display = 'none';
+                            // 可以根据后端返回的响应进行相应的处理
+                        }
+                    })
+                    .catch(function(error) {
+                        // 处理错误，例如显示错误消息
+                        console.error('Error:', error);
+                    });
+
+                // 隐藏回复输入框和提交按钮
+                // replyForm.style.display = 'none';
+
+            });
+        });
+    });
+</script>
 
 </html>

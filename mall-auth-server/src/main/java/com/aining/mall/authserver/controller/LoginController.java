@@ -80,7 +80,7 @@ public class LoginController {
 
     /**
      * TODO: 重定向携带数据：利用session原理，将数据放在session中。
-     * TODO:只要跳转到下一个页面取出这个数据以后，session里面的数据就会删掉
+     * TODO: 只要跳转到下一个页面取出这个数据以后，session里面的数据就会删掉
      * TODO：分布下session问题
      * RedirectAttributes：重定向也可以保留数据，不会丢失
      * 用户注册

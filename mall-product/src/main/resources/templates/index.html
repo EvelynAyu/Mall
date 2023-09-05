@@ -2,32 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Shop Toghter</title>
-  <link rel="stylesheet" href="/static/index/css/swiper-3.4.2.min.css">
-  <link rel="stylesheet" href="/static/index/css/GL.css">
-  <script src="/static/index/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shop Toghter</title>
+    <link rel="stylesheet" href="/static/index/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="/static/index/css/GL.css">
+    <script src="/static/index/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
 
-  <script src="/static/index/js/swiper-3.4.2.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/index/js/swiper-3.4.2.jquery.min.js" type="text/javascript" charset="utf-8"></script>
 
-  <script src="/static/index/js/swiper-3.4.2.min.js"></script>
+    <script src="/static/index/js/swiper-3.4.2.min.js"></script>
 
 </head>
 
 <body>
-  <div class="top_find">
+<div class="top_find">
     <div class="top_find_son">
-      <img src="/static/index/img/top_find_logo.png" alt="">
-      <div class="input_find">
-        <input type="text" placeholder="卸妆水" />
-        <span style="background: url('/static/index/img/img_12.png') 0 -1px;"></span>
-        <a href="/static/#"><img src="/static/index/img/img_09.png" /></a>
-      </div>
+        <img src="/static/index/img/top_find_logo.png" alt="">
+        <div class="input_find">
+            <input type="text" placeholder="卸妆水"/>
+            <span style="background: url('/static/index/img/img_12.png') 0 -1px;"></span>
+            <a href="/static/#"><img src="/static/index/img/img_09.png"/></a>
+        </div>
     </div>
-  </div>
-  <ul class="left_floor">
+</div>
+<ul class="left_floor">
     <li class="left_floor_xiang">享品质</li>
     <li class="left_floor_fu">服饰美妆</li>
     <li class="left_floor_jia">家电手机</li>
@@ -40,398 +40,301 @@
     <li class="left_floor_lv">旅行健康</li>
     <li class="left_floor_hai">还没逛够</li>
     <li class="left_floor_ding">顶部</li>
-  </ul>
-  <header>
+</ul>
+<header>
     <!--头部-->
     <div class="header_head">
-      <div class="header_head_box">
-<!--        <a href="/static/#" class="img"><img src="/static/index/img/logo.jpg" style="width:190px;height:170px"/></a>-->
+        <div class="header_head_box">
+            <!--        <a href="/static/#" class="img"><img src="/static/index/img/logo.jpg" style="width:190px;height:170px"/></a>-->
 
-        <ul>
-          <li>
-            <a th:if="${session.loginUser != null}">Hello, [[${session.loginUser==null?'':session.loginUser.nickname}]]</a>
-            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html">Sign in</a>
-          </li>
-          <li>
-            <a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html" class="li_2">Sign up</a>
-          </li>
-          <li>
-            <a th:if="${session.loginUser != null}" href="http://auth.mall.com/loguot.html" class="li_2">Sign Out</a>
-          </li>
-          <span>|</span>
-          <li>
-            <a href="http://member.mall.com/memberOrder.html">My Order</a>
-          </li>
-          <span>|</span>
-          <li>
-            <a href="http://wishlist.mall.com/showPersonalWishlist">Wish List</a>
-          </li>
-        </ul>
-      </div>
+            <ul>
+                <li>
+                    <a th:if="${session.loginUser != null}">Hello,
+                        [[${session.loginUser==null?'':session.loginUser.nickname}]]</a>
+                    <a th:if="${session.loginUser == null}" href="http://auth.mall.com/login.html">Sign in</a>
+                </li>
+                <li>
+                    <a th:if="${session.loginUser == null}" href="http://auth.mall.com/reg.html" class="li_2">Sign
+                        up</a>
+                </li>
+                <li>
+                    <a th:if="${session.loginUser != null}" href="http://auth.mall.com/loguot.html" class="li_2">Sign
+                        Out</a>
+                </li>
+                <span>|</span>
+                <li>
+                    <a href="http://member.mall.com/memberOrder.html">My Order</a>
+                </li>
+                <span>|</span>
+                <li>
+                    <a href="http://wishlist.mall.com/showPersonalWishlist">Wish List</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <!--搜索导航-->
     <div class="header_sous">
-      <div class="header_form">
-        <input id="searchText" type="text" placeholder="" />
-        <span style="background: url(../static/index/img/img_12.png) 0 -1px;"></span>
-        <!--<button><i class="glyphicon"></i></button>-->
-        <a  href="javascript:search()" ><img src="/static/index/img/img_09.png"/></a>
-      </div>
-      <div class="header_ico">
-        <div class="header_gw">
-          <img src="/static/index/img/img_15.png" />
-          <span><a href="http://cart.mall.com/cart.html">Basket</a></span>
+        <div class="header_form">
+            <input id="searchText" type="text" placeholder=""/>
+            <span style="background: url(../static/index/img/img_12.png) 0 -1px;"></span>
+            <!--<button><i class="glyphicon"></i></button>-->
+            <a href="javascript:search()"><img src="/static/index/img/img_09.png"/></a>
         </div>
-      </div>
+        <div class="header_ico">
+            <div class="header_gw">
+                <img src="/static/index/img/img_15.png"/>
+                <span><a href="http://cart.mall.com/cart.html">Basket</a></span>
+            </div>
+        </div>
 
     </div>
     <!--轮播主体内容-->
     <div class="header_main">
-      <div class="header_banner">
-        <div class="header_main_left">
-          <ul>
-            <li  th:each="category : ${categories}">
-              <a href="/static/#" class="header_main_left_a"   th:attr="ctg-data = ${category.catId}"><b th:text="${category.name}">家用电器</b></a>
-            </li>
-          </ul>
-        </div>
-        <div class="header_main_center">
-          <div class="swiper-container swiper1">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="/static/#"><img src="/static/index/img/lunbo.png" /></a>
-              </div>
-
-              <div class="swiper-slide">
-                <a href="/static/#"><img src="/static/index/img/lunbo3.png" /></a>
-              </div>
-
-              <div class="swiper-slide">
-                <a href="/static/#"><img src="/static/index/img/lunbo6.png" /></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="/static/#"><img src="/static/index/img/lunbo7.png" /></a>
-              </div>
+        <div class="header_banner">
+            <div class="header_main_left">
+                <ul>
+                    <li th:each="category : ${categories}">
+                        <a href="/static/#" class="header_main_left_a" th:attr="ctg-data = ${category.catId}"><b
+                                th:text="${category.name}">家用电器</b></a>
+                    </li>
+                </ul>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next swiper-button-white"></div>
-            <div class="swiper-button-prev swiper-button-white"></div>
-          </div>
-          <div class="header_main_center_b">
-            <a href="/static/#"><img src="/static/index/img/5a13bf0bNe1606e58.jpg" /></a>
-            <a href="/static/#"><img src="/static/index/img/5a154759N5385d5d6.jpg" /></a>
-          </div>
-        </div>
-        <div class="header_main_right">
-          <div class="header_main_right_user">
-            <div class="user_info">
-              <div class="user_info_tou">
-                <a href="/static/#"><img class="" src="/static/index/img/touxiang.png"></a>
-              </div>
-              <div class="user_info_show">
-                <p class="">Welcome!</p>
-                <p>
-                  <a href="/static/#" class="">Sign in</a>
-                  <a href="/static/#" class="">Register</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="header_main_right_new">
-            <div class="header_new">
-              <div class="header_new_t">
-                <p class="active">
-                  <a href="/static/#">Sale</a>
-                </p>
-                <p>
-                  <a href="/static/#">Notice</a>
-                </p>
-                <a href="/static/#">More</a>
-              </div>
-              <div class="header_new_connter">
-                <div class="header_new_connter_1">
-                  <ul>
-                    <li>
-                      <a href="/static/#">Summer Sale Extravaganza: Up to 50% Off!</a>
-                    </li>
-                    <li>
-                      <a href="/static/#">Clearance Event: Everything Must Go!</a>
-                    </li>
-                    <li>
-                      <a href="/static/#">Buy One, Get One Free: Limited Time Offer!</a>
-                    </li>
-                    <li>
-                      <a href="/static/#">New Arrivals: Shop the Latest Trends Now!</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="header_new_connter_1" style="display: none;">
-                  <ul>
-                    <li>
-                      <a href="/static/#">New Payment Options Now Available!</a>
-                    </li>
-                    <li>
-                      <a href="/static/#">Service Update: Share wish lists with friends!</a>
-                    </li>
-                    <li>
-                      <a href="/static/#">Community Update: Charity Event Recap</a>
-                    </li>
-                    <li>
-                      <a href="/static/#">Upcoming Webinar: Get the Most from Your Shopping Experience</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="header_main_right_ser">
-            <div class="ser_box">
-              <ul>
-                <li class="ser_box_item">
-                  <a href="/static/#">
-  											<img src="/static/index/img/huafei.png" />
-  											<span>Phone bill</span>
-  										</a>
-                </li>
-                <li class="ser_box_item">
-                  <a href="/static/#">
-  											<img src="/static/index/img/jipiao.png" />
-  											<span>Airplane ticket</span>
-  										</a>
-                </li>
-                <li class="ser_box_item">
-                  <a href="/static/#">
-  											<img src="/static/index/img/jiudian.png" />
-  											<span>Hotel</span>
-  										</a>
-                </li>
-                <li class="ser_box_item">
-                  <a href="/static/#">
-  											<img src="/static/index/img/youxi.png" />
-  											<span>Game</span>
-  										</a>
-                </li>
-                <li class="ser_box_item1">
-                  <a href="/static/#">
-  											<img src="/static/index/img/qiyegou.png" />
-  											<span>Tourist attraction</span>
-  										</a>
-                </li>
-                <li class="ser_box_item1">
-                  <a href="/static/#">
-  											<img src="/static/index/img/jiayouka.png" />
-  											<span>Gas card</span>
-  										</a>
-                </li>
-                <li class="ser_box_item1">
-                  <a href="/static/#">
-  											<img src="/static/index/img/dianyingpiao.png" />
-  											<span>Movie ticket</span>
-  										</a>
-                </li>
-                <li class="ser_box_item1">
-                  <a href="/static/#">
-  											<img src="/static/index/img/huochepiao.png" style="height:20px;" />
-  											<span>Train ticket</span>
-  										</a>
-                </li>
-              </ul>
-              <div class="ser_box_aaa">
-                <div class="ser_box_aaa_one">
-                  <div class="ser_box_aaa_nav">
-                    <ol>
-                      <li class="active">
-                        <a href="/static/#">话费</a>
-                      </li>
-                      <li>
-                        <a href="/static/#">机票</a>
-                      </li>
-                      <li>
-                        <a href="/static/#">酒店</a>
-                      </li>
-                      <li>
-                        <a href="/static/#">游戏</a>
-                      </li>
-                    </ol>
-                    <div class="ser_ol">
-                      <div class="ser_ol_li">
-                        <ul>
-                          <div class="guanbi">X</div>
-                          <a class="active">话费充值</a>
-                          <a>流量充值</a>
-                          <a>套餐变更</a>
-                          <div class="ser_ol_div">
-                            <p>号码<input type="text" /></p>
-                            <p style="margin: 10px 0;">面值
-                              <select name="">
-  																	<option value="">100元</option>
-  																	<option value="">20元</option>
-  																	<option value="">50元</option>
-  																	<option value="">10元</option>
-  																	<option value="">2元</option>
-  																</select>
-                              <span>￥98.0-￥100.0</span></p>
-                          </div>
-                          <button>快速充值</button>
-                          <p class="p">抢99减50元话费</p>
-                        </ul>
+            <div class="header_main_center">
+                <div class="swiper-container swiper1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="/static/#"><img src="/static/index/img/lunbo.png"/></a>
+                        </div>
 
-                      </div>
-                      <div class="ser_ol_li">
-                        <ul>
-                          <div class="guanbi">X</div>
-                          <a class="active">国际机票</a>
-                          <a>国际/港澳</a>
-                          <a>特惠活动</a>
-                          <div class="ser_ol_div1">
-                            <p>
-                              <input type="radio" name="a" style="vertical-align:middle;" />单程
-                              <input type="radio" name="a" style="vertical-align:middle;" />往返
-                            </p>
-                            <input type="text" placeholder="出发城市" />
-                            <input type="text" placeholder="到达城市" />
-                            <input type="text" placeholder="日期" />
-                          </div>
-                          <button>机票查询</button>
-                          <span class="p">当季热门特惠机票</span>
-                        </ul>
-                      </div>
-                      <div class="ser_ol_li">
-                        <ul>
-                          <div class="guanbi">X</div>
-                          <a class="active" style="width: 50%;">国内港澳台</a>
-                          <a style="width: 50%;">促销活动</a>
-                          <div class="ser_ol_div1">
-                            <input type="text" placeholder="出发城市" style="margin-top: 10px;" />
-                            <input type="text" placeholder="到达城市" />
-                            <input type="text" placeholder="日期" />
-                            <input type="text" placeholder="酒店 商圈 地标" />
-                          </div>
-                          <button>酒店查询</button>
-                          <span class="p">订酒店到</span>
-                        </ul>
-                      </div>
-                      <div class="ser_ol_li">
-                        <ul>
-                          <div class="guanbi">X</div>
-                          <a class="active">点卡</a>
-                          <a>QQ</a>
-                          <a>页游</a>
-                          <div class="ser_ol_div1">
-                            <input type="text" placeholder="游戏" style="margin-top: 15px;" />
-                            <br />面值
-                            <select name="" style="margin: 8px 0;">
-  																<option value="">面值</option>
-  																<option value="">面值</option>
-  																<option value="">面值</option>
-  															</select><span style="color: #C81623;">￥0.00</span>
-                            <p>
-                              <input type="radio" name="a" style="width: 15px;vertical-align:middle;" />直充
-                              <input type="radio" name="a" style="width: 15px;vertical-align:middle;" />卡密
-                            </p>
-                          </div>
-                          <button>快速充值</button>
-                          <span class="p">吃鸡就要快人一步</span>
-                        </ul>
-                      </div>
+                        <div class="swiper-slide">
+                            <a href="/static/#"><img src="/static/index/img/lunbo3.png"/></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="/static/#"><img src="/static/index/img/lunbo6.png"/></a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="/static/#"><img src="/static/index/img/lunbo7.png"/></a>
+                        </div>
                     </div>
-                  </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next swiper-button-white"></div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
                 </div>
-              </div>
+                <div class="header_main_center_b">
+                    <a href="/static/#"><img src="/static/index/img/5a13bf0bNe1606e58.jpg"/></a>
+                    <a href="/static/#"><img src="/static/index/img/5a154759N5385d5d6.jpg"/></a>
+                </div>
             </div>
-          </div>
+            <div class="header_main_right">
+                <div class="header_main_right_user">
+                    <div class="user_info">
+                        <div class="user_info_tou">
+                            <a href="/static/#"><img class="" src="/static/index/img/touxiang.png"></a>
+                        </div>
+                        <div class="user_info_show">
+                            <p class="">Welcome!</p>
+                            <p>
+                                <a th:href="|http://member.mall.com/account.html|" class="">Your Account</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="header_main_right_new">
+                    <div class="header_new">
+                        <div class="header_new_t">
+                            <p class="active">
+                                <a href="/static/#">Sale</a>
+                            </p>
+                            <p>
+                                <a href="/static/#">Notice</a>
+                            </p>
+                            <a href="/static/#">More</a>
+                        </div>
+                        <div class="header_new_connter">
+                            <div class="header_new_connter_1">
+                                <ul>
+                                    <li>
+                                        <a href="/static/#">Summer Sale Extravaganza: Up to 50% Off!</a>
+                                    </li>
+                                    <li>
+                                        <a href="/static/#">Clearance Event: Everything Must Go!</a>
+                                    </li>
+                                    <li>
+                                        <a href="/static/#">Buy One, Get One Free: Limited Time Offer!</a>
+                                    </li>
+                                    <li>
+                                        <a href="/static/#">New Arrivals: Shop the Latest Trends Now!</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header_new_connter_1" style="display: none;">
+                                <ul>
+                                    <li>
+                                        <a href="/static/#">New Payment Options Now Available!</a>
+                                    </li>
+                                    <li>
+                                        <a href="/static/#">Service Update: Share wish lists with friends!</a>
+                                    </li>
+                                    <li>
+                                        <a href="/static/#">Community Update: Charity Event Recap</a>
+                                    </li>
+                                    <li>
+                                        <a href="/static/#">Upcoming Webinar: Get the Most from Your Shopping
+                                            Experience</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header_main_right_ser">
+                    <div class="ser_box">
+                        <ul>
+                            <li class="ser_box_item">
+                                <a href="/static/#">
+                                    <img src="/static/index/img/huafei.png"/>
+                                    <span>Phone bill</span>
+                                </a>
+                            </li>
+                            <li class="ser_box_item">
+                                <a href="/static/#">
+                                    <img src="/static/index/img/jipiao.png"/>
+                                    <span>Airplane ticket</span>
+                                </a>
+                            </li>
+                            <li class="ser_box_item">
+                                <a href="/static/#">
+                                    <img src="/static/index/img/jiudian.png"/>
+                                    <span>Hotel</span>
+                                </a>
+                            </li>
+                            <li class="ser_box_item">
+                                <a href="/static/#">
+                                    <img src="/static/index/img/youxi.png"/>
+                                    <span>Game</span>
+                                </a>
+                            </li>
+                            <li class="ser_box_item1">
+                                <a href="/static/#">
+                                    <img src="/static/index/img/qiyegou.png"/>
+                                    <span>Tourist attraction</span>
+                                </a>
+                            </li>
+                            <li class="ser_box_item1">
+                                <a href="/static/#">
+                                    <img src="/static/index/img/jiayouka.png"/>
+                                    <span>Gas card</span>
+                                </a>
+                            </li>
+                            <li class="ser_box_item1">
+                                <a href="/static/#">
+                                    <img src="/static/index/img/dianyingpiao.png"/>
+                                    <span>Movie ticket</span>
+                                </a>
+                            </li>
+                            <li class="ser_box_item1">
+                                <a href="/static/#">
+                                    <img src="/static/index/img/huochepiao.png" style="height:20px;"/>
+                                    <span>Train ticket</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
     </div>
-    </div>
-  </header>
+</header>
 
-  <div class="section_second">
+<div class="section_second">
     <!-- 第一层 -->
     <div class="section_second_header">
-      <p class="section_second_header_img"></p>
-      <div class="section_second_header_left">
-        <p></p>
-        <span class="">Today's Deals</span>
-<!--        <span>总有你想不到的低价</span>-->
-        <span>
+        <p class="section_second_header_img"></p>
+        <div class="section_second_header_left">
+            <p></p>
+            <span class="">Today's Deals</span>
+            <!--        <span>总有你想不到的低价</span>-->
+            <span>
         </span>
-      </div>
-      <div class="section_second_header_right">
-        <p>Ends after</p>
-        <span class="section_second_header_right_hours">00</span>
-        <span class="section_second_header_right_mao">：</span>
-        <span class="section_second_header_right_minutes">00</span>
-        <span class="section_second_header_right_mao">：</span>
-        <span class="section_second_header_right_second">00</span>
-      </div>
+        </div>
+        <div class="section_second_header_right">
+            <p>Ends after</p>
+            <span class="section_second_header_right_hours">00</span>
+            <span class="section_second_header_right_mao">：</span>
+            <span class="section_second_header_right_minutes">00</span>
+            <span class="section_second_header_right_mao">：</span>
+            <span class="section_second_header_right_second">00</span>
+        </div>
     </div>
     <div class="section_second_list">
-      <div class="swiper-container swiper_section_second_list_left">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <ul>
-              <li>
-                <img src="/static/index/img/section_second_list_img1.jpg" alt="">
-                <p>Ariel All-in-One Platinum PODS Washing Liquid Laundry Detergent Tablets / Capsules, 120 Washes (60 x 2) with Extra Stain Removal For Extra Hygiene</p>
-                <span>¥24.9</span><s>¥36.9</s>
-              </li>
-              <li>
-                <img src="/static/index/img/section_second_list_img2.jpg" alt="">
-                <p>Disposable Face Towel 100 Counts, Extra Thick & Soft Dry Baby Wipes for Women, Dry and Wet Use Facial Cotton Tissue, Make Up Removing Thickening for Sensitive Skin 20x15cm (4 PACK=400Counts)</p>
-                <span>¥17.90</span><s>¥29.90</s>
-              </li>
-              <li>
-                <img src="/static/index/img/section_second_list_img3.jpg" alt="">
-                <p>Curel Trial & Travel Kit, Two Week Skincare Routine for Dry, Sensitive Skin</p>
-                <span>¥20.70</span><s>¥44.90</s>
-              </li>
-              <li>
-                <img src="/static/index/img/section_second_list_img4.jpg" alt="">
-                <p>REAL TECHNIQUES,5 Count (Pack of 1) Everyday Essentials Makeup Brush Complete Face Set (Miracle Complexion Sponge, Expert Face, Blush, Setting and Deluxe Crease Brushes)</p>
-                <span>¥30.00</span><s>¥50.00</s>
-              </li>
-              <li>
-                <img src="/static/index/img/section_second_list_img5.jpg" alt="">
-                <p>Under Armour Unisex UA Heatgear NS, trainer socks; compression socks</p>
-                <span>¥40.00</span><s>¥50.00</s>
-              </li>
-            </ul>
-          </div>
+        <div class="swiper-container swiper_section_second_list_left">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <ul>
+                        <li>
+                            <img src="/static/index/img/section_second_list_img1.jpg" alt="">
+                            <p>Ariel All-in-One Platinum PODS Washing Liquid Laundry Detergent Tablets / Capsules, 120
+                                Washes (60 x 2) with Extra Stain Removal For Extra Hygiene</p>
+                            <span>¥24.9</span><s>¥36.9</s>
+                        </li>
+                        <li>
+                            <img src="/static/index/img/section_second_list_img2.jpg" alt="">
+                            <p>Disposable Face Towel 100 Counts, Extra Thick & Soft Dry Baby Wipes for Women, Dry and
+                                Wet Use Facial Cotton Tissue, Make Up Removing Thickening for Sensitive Skin 20x15cm (4
+                                PACK=400Counts)</p>
+                            <span>¥17.90</span><s>¥29.90</s>
+                        </li>
+                        <li>
+                            <img src="/static/index/img/section_second_list_img3.jpg" alt="">
+                            <p>Curel Trial & Travel Kit, Two Week Skincare Routine for Dry, Sensitive Skin</p>
+                            <span>¥20.70</span><s>¥44.90</s>
+                        </li>
+                        <li>
+                            <img src="/static/index/img/section_second_list_img4.jpg" alt="">
+                            <p>REAL TECHNIQUES,5 Count (Pack of 1) Everyday Essentials Makeup Brush Complete Face Set
+                                (Miracle Complexion Sponge, Expert Face, Blush, Setting and Deluxe Crease Brushes)</p>
+                            <span>¥30.00</span><s>¥50.00</s>
+                        </li>
+                        <li>
+                            <img src="/static/index/img/section_second_list_img5.jpg" alt="">
+                            <p>Under Armour Unisex UA Heatgear NS, trainer socks; compression socks</p>
+                            <span>¥40.00</span><s>¥50.00</s>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="swiper-button-prev second_list">
+                <p></p>
+            </div>
+            <div class="swiper-button-next second_list">
+                <p></p>
+            </div>
         </div>
-        <div class="swiper-button-prev second_list">
-          <p></p>
-        </div>
-        <div class="swiper-button-next second_list">
-          <p></p>
-        </div>
-      </div>
-      <ul class="section_second_list_right">
-        <li>
-          <img src="/static/index/img/section_second_list_right_img.jpg" alt="">
-        </li>
-        <li>
-          <img src="/static/index/img/section_second_list_right_img.png" alt="">
-        </li>
-        <div class="section_second_list_right_button">
-          <p class="section_second_list_right_button_active"></p>
-          <p></p>
-        </div>
-      </ul>
+        <ul class="section_second_list_right">
+            <li>
+                <img src="/static/index/img/section_second_list_right_img.jpg" alt="">
+            </li>
+            <li>
+                <img src="/static/index/img/section_second_list_right_img.png" alt="">
+            </li>
+            <div class="section_second_list_right_button">
+                <p class="section_second_list_right_button_active"></p>
+                <p></p>
+            </div>
+        </ul>
     </div>
- 
- 
-  </div>
 
 
- 
+</div>
+
+
 </body>
 <script type="text/javascript">
-  function search() {
-      var keyword=$("#searchText").val()
-      window.location.href="http://search.mall.com/list.html?keyword="+keyword;
-  }
+    function search() {
+        var keyword = $("#searchText").val()
+        window.location.href = "http://search.mall.com/list.html?keyword=" + keyword;
+    }
 
 </script>
 <script type="text/javascript" src="/static/index/js/text.js"></script>

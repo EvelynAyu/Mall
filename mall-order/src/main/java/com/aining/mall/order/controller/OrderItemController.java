@@ -4,11 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.aining.mall.order.entity.OrderItemEntity;
 import com.aining.mall.order.service.OrderItemService;
@@ -79,6 +75,16 @@ public class OrderItemController {
 		orderItemService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+    /**
+     * 根据spuId查询订单信息
+     */
+    @GetMapping("/buyOrNot")
+    String checkPurchase(@RequestParam("spuId") Long spuId){
+        Boolean buyOrNot = orderItemService.checkPurchase(spuId);
+        System.out.println("************************************************");
+        return buyOrNot.toString();
     }
 
 }

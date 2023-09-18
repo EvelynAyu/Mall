@@ -20,58 +20,45 @@
 </header>
 <section>
 	<form action="/register" method="post" class="one">
-		<!--		<div style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'msg') ? errors.msg : '') : ''}">-->
 		<div class="register-box">
 			<label class="username_label">username
 				<input name="userName" maxlength="20" type="text">
 			</label>
-			<div class="tips" style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'userName') ? errors.userName : '') : ''}">
-
-			</div>
+			<div class="tips" style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'userName') ? errors.userName : '') : ''}"></div>
 		</div>
 		<div class="register-box">
 			<label class="other_label">Password
 				<input name="password" maxlength="20" type="password">
 			</label>
-			<div class="tips" style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'password') ? errors.password : '') : ''}">
-
-			</div>
+			<div class="tips" style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'password') ? errors.password : '') : ''}"></div>
 		</div>
 		<div class="register-box">
 			<label class="other_label">Re-enter password
 				<input maxlength="20" type="password">
 			</label>
-			<div class="tips">
-
-			</div>
 		</div>
 		<div class="register-box">
 			<label class="other_label">
 				<span>China +86 </span>
 				<input name="phone" class="phone" id="phoneNum" maxlength="20" type="text">
 			</label>
-			<div class="tips" style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'phone') ? errors.phone : '') : ''}">
-
-			</div>
+			<div class="tips" style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'phone') ? errors.phone : '') : ''}"></div>
 		</div>
 		<div class="register-box">
-			<label class="other_label">Code
+			<label class="other_label">Captcha
 				<input name="code" maxlength="20" type="text" class="caa">
 			</label>
-			<a id="sendCode" class=""> Send Code </a>
+			<a id="sendCode" class=""> Send Captcha </a>
 		</div>
 		<div class="arguement">
-			<input type="checkbox" id="xieyi"> Agree to Shop Toghter
-			<a href="/static/reg/#">Conditions of Use & Sale</a>
-			<div class="tips" style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'code') ? errors.code : '') : ''}">
-
-			</div>
+<!--			<input type="checkbox" id="xieyi"> Agree to Shop Toghter-->
+<!--			<a href="/static/reg/#">Conditions of Use & Sale</a>-->
+			<div class="tips" style="color: red" th:text="${errors != null ? (#maps.containsKey(errors, 'code') ? errors.code : '') : ''}"></div>
 			<br/>
 			<div class="submit_btn">
 				<button type="submit" id="submit_btn">Sign Up</button>
 			</div>
 		</div>
-
 	</form>
 </section>
 <br/><br/>
@@ -128,7 +115,7 @@
         })
         $('input').eq(4).focus(function () {
             if ($(this).val().length == 0) {
-                $(this).parent().next().next("div").text("看不清？点击图片更换验证码");
+                $(this).parent().next().next("div").text("");
             }
         })
         //input各种判断
@@ -138,15 +125,15 @@
                 $(this).parent().next("div").text("");
                 $(this).parent().next("div").css("color", '#ccc');
             } else if ($(this).val().length > 0 && $(this).val().length < 4) {
-                $(this).parent().next("div").text("长度只能在4-20个字符之间");
+                $(this).parent().next("div").text("The length can only be between 4 and 20 characters.");
                 $(this).parent().next("div").css("color", 'red');
             } else if ($(this).val().length >= 4 && !isNaN($(this).val())) {
-                $(this).parent().next("div").text("用户名不能为纯数字");
+                $(this).parent().next("div").text("Username cannot be a plain number");
                 $(this).parent().next("div").css("color", 'red');
             } else {
                 for (var m = 0; m < stuList.length; m++) {
                     if ($(this).val() == stuList[m].name) {
-                        $(this).parent().next("div").text("该用户名已被注册");
+                        $(this).parent().next("div").text("This username is already registered");
                         $(this).parent().next("div").css("color", 'red');
                         return;
                     }
@@ -160,7 +147,7 @@
                 $(this).parent().next("div").text("");
                 $(this).parent().next("div").css("color", '#ccc');
             } else if ($(this).val().length > 0 && $(this).val().length < 6) {
-                $(this).parent().next("div").text("长度只能在6-20个字符之间");
+                $(this).parent().next("div").text("The length can only be between 6 and 20 characters.");
                 $(this).parent().next("div").css("color", 'red');
             } else {
                 $(this).parent().next("div").text("");
@@ -172,7 +159,7 @@
                 $(this).parent().next("div").text("");
                 $(this).parent().next("div").css("color", '#ccc');
             } else if ($(this).val() != $('input').eq(1).val()) {
-                $(this).parent().next("div").text("两次密码不匹配");
+                $(this).parent().next("div").text("Two password mismatches");
                 $(this).parent().next("div").css("color", 'red');
             } else {
                 $(this).parent().next("div").text("");
@@ -183,8 +170,8 @@
             if ($(this).val().length == 0) {
                 $(this).parent().next("div").text("");
                 $(this).parent().next("div").css("color", '#ccc');
-            } else if ($(this).val().substr(0, 3) != 138 && $(this).val().substr(0, 3) != 189 && $(this).val().substr(0, 3) != 139 && $(this).val().substr(0, 3) != 158 && $(this).val().substr(0, 3) != 188 && $(this).val().substr(0, 3) != 157 || $(this).val().length != 11) {
-                $(this).parent().next("div").text("手机号格式不正确");
+            } else if ($(this).val().length != 11) {
+                $(this).parent().next("div").text("Incorrect mobile phone number format");
                 $(this).parent().next("div").css("color", 'red');
             } else {
                 $(this).parent().next("div").text("");
@@ -216,38 +203,6 @@
                 $(this).parent().next().next("div").text("");
             }
         })
-        //	提交按钮
-        // $("#submit_btn").click(function (e) {
-        //     for (var j = 0; j < 5; j++) {
-        //         if ($('input').eq(j).val().length == 0) {
-        //             $('input').eq(j).focus();
-        //             if (j == 4) {
-        //                 $('input').eq(j).parent().next().next("div").text("此处不能为空");
-        //                 $('input').eq(j).parent().next().next("div").css("color", 'red');
-        //                 e.preventDefault();
-        //                 return;
-        //             }
-        //             $('input').eq(j).parent().next(".tips").text("此处不能为空");
-        //             $('input').eq(j).parent().next(".tips").css("color", 'red');
-        //             e.preventDefault();
-        //             return;
-        //         }
-        //     }
-        //     //协议
-        //     if ($("#xieyi")[0].checked) {
-        //         //向变量stuList数组添加一个数值，数值内部格式Student(name,password,tel,id)
-        //         //发送用户信息
-        //         stuList.push(new Student($('input').eq(0).val(), $('input').eq(1).val(), $('input').eq(3).val(), stuList.length + 1));
-        //         localStorage.setItem('stuList', JSON.stringify(stuList));
-        //         alert("注册成功");
-        //         window.open("userlist.html", "_blank");
-        //     } else {
-        //         $("#xieyi").next().next().next(".tips").text("请勾选协议");
-        //         $("#xieyi").next().next().next(".tips").css("color", 'red');
-        //         e.preventDefault();
-        //         return;
-        //     }
-        // })
 
         //  建立构造函数，构造学生信息模板
         function Student(name, password, tel, id) {

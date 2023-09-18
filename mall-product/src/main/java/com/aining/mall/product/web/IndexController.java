@@ -44,6 +44,5 @@ public class IndexController {
         Map<String, List<Catelog2Vo>> catalogJson = categoryService.getCatalogJson();
 
         return catalogJson;
-
     }
 }

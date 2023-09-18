@@ -17,36 +17,12 @@
 </head>
 
 <body>
-<div class="top_find">
-    <div class="top_find_son">
-        <img src="/static/index/img/top_find_logo.png" alt="">
-        <div class="input_find">
-            <input type="text" placeholder="卸妆水"/>
-            <span style="background: url('/static/index/img/img_12.png') 0 -1px;"></span>
-            <a href="/static/#"><img src="/static/index/img/img_09.png"/></a>
-        </div>
-    </div>
-</div>
-<ul class="left_floor">
-    <li class="left_floor_xiang">享品质</li>
-    <li class="left_floor_fu">服饰美妆</li>
-    <li class="left_floor_jia">家电手机</li>
-    <li class="left_floor_dian">电脑数码</li>
-    <li class="left_floor_3C">3C运动</li>
-    <li class="left_floor_ai">爱吃</li>
-    <li class="left_floor_mu">母婴家居</li>
-    <li class="left_floor_tu">图书汽车</li>
-    <li class="left_floor_you">游戏金融</li>
-    <li class="left_floor_lv">旅行健康</li>
-    <li class="left_floor_hai">还没逛够</li>
-    <li class="left_floor_ding">顶部</li>
-</ul>
+
+
 <header>
     <!--头部-->
     <div class="header_head">
         <div class="header_head_box">
-            <!--        <a href="/static/#" class="img"><img src="/static/index/img/logo.jpg" style="width:190px;height:170px"/></a>-->
-
             <ul>
                 <li>
                     <a th:if="${session.loginUser != null}">Hello,
@@ -95,7 +71,7 @@
                 <ul>
                     <li th:each="category : ${categories}">
                         <a href="/static/#" class="header_main_left_a" th:attr="ctg-data = ${category.catId}"><b
-                                th:text="${category.name}">家用电器</b></a>
+                                th:text="${category.name}">Mobile phone</b></a>
                     </li>
                 </ul>
             </div>

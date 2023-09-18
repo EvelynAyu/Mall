@@ -1,6 +1,7 @@
 package com.aining.mall.order.dao;
 
 import com.aining.mall.order.entity.OrderItemEntity;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,5 +14,4 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface OrderItemDao extends BaseMapper<OrderItemEntity> {
-	
 }

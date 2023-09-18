@@ -29,13 +29,6 @@ public class MyRabbitMQConfig {
      */
     @Bean
     public Queue orderDelayQueue() {
-        /*
-            Queue(String name,  队列名字
-            boolean durable,  是否持久化
-            boolean exclusive,  是否排他
-            boolean autoDelete, 是否自动删除
-            Map<String, Object> arguments) 属性
-         */
         HashMap<String, Object> arguments = new HashMap<>();
         arguments.put("x-dead-letter-exchange", "order-event-exchange");
         arguments.put("x-dead-letter-routing-key", "order.release.order");

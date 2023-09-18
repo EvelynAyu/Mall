@@ -57,7 +57,6 @@ public class ShareWishlistWebController {
     public String joinWishlist(@PathVariable("codeId") Long codeId){
         // 成员加入，更新sharedWishlist数据库中的内容
         sharedWishlistService.updateSharedWishlist(codeId);
-
         return "redirect:http://wishlist.mall.com/showSharedWishlist";
     }
 

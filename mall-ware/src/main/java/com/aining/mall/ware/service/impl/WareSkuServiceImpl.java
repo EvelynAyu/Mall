@@ -154,7 +154,6 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
         wareOrderTaskEntity.setCreateTime(new Date());
         wareOrderTaskService.save(wareOrderTaskEntity);
 
-
         List<OrderItemVo> orderItemVos = vo.getLocks();
         //1. 找到商品在哪些仓库有库存
         List<SkuWareHasStock> wareHasStocks = orderItemVos.stream().map((orderItemVo) -> {
@@ -215,10 +214,8 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
                     BeanUtils.copyProperties(taskDetailEntity,detailTo);
                     stockLockedTo.setDetailTo(detailTo);
                     rabbitTemplate.convertAndSend("stock-event-exchange","stock.locked",stockLockedTo);
-
                     // 锁成功了之后就退出当前sku的锁库存操作
                     break;
-
                 }else{
                     // 锁库存失败，for循环锁下一个仓库
                 }
@@ -257,11 +254,9 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             String orderSn = orderTaskInfo.getOrderSn();
             //远程查询订单信息
             R orderData = orderFeignService.getOrderStatus(orderSn);
-
             if (orderData.getCode() == 0) {
                 //订单数据返回成功
                 OrderVo orderInfo = orderData.getData("data", new TypeReference<OrderVo>() {});
-
                 // 判断订单状态是否已取消或者支付或者订单不存在(null)
                 // 订单状态【0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单】
                 if (orderInfo == null || orderInfo.getStatus() == 4) {

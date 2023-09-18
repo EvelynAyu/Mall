@@ -30,9 +30,6 @@ public class InviteWebController {
     public R generateInviteCode(@RequestParam("wishlistId") Long wishlistId, Model model){
         // 为被选择的愿望清单创建邀请码
         String inviteCode = inviteService.generateInviteCode(wishlistId);
-//        Map<String, String> result = new HashMap<>();
-//        result.put("inviteCode", inviteCode);
-//        return result;
         return R.ok().put("inviteCode", inviteCode);
     }
 
@@ -43,8 +40,6 @@ public class InviteWebController {
     public String invite(Model model, @PathVariable String inviteCode) {
         // 通过邀请码找到对应的愿望清单和创建者
         InviteEntity inviteEntity = inviteService.getWishlistByInviteCode(inviteCode);
-//        model.addAttribute("wishlistName", inviteEntity.getWlName());
-//        model.addAttribute("creator", inviteEntity.getOwnerName());
         model.addAttribute("inviteEntity",inviteEntity);
         return "invite";
     }

@@ -58,14 +58,14 @@ public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentDao, SpuComment
 
     @Override
     public void saveCommnet(Long spuId, String content, Integer commentType) {
-
+        // 获得登陆人的信息
+        MemberResponseVo loginUser = (MemberResponseVo) session.getAttribute(LOGIN_USER);
         // 创建CommentEntity并保存到数据库
         SpuCommentEntity spuCommentEntity = new SpuCommentEntity();
         spuCommentEntity.setSpuId(spuId);
         SpuInfoEntity spuInfoEntity = spuInfoService.getById(spuId);
         spuCommentEntity.setSpuName(spuInfoEntity.getSpuName());
-        // 获得登陆人的信息
-        MemberResponseVo loginUser = (MemberResponseVo) session.getAttribute(LOGIN_USER);
+        // 保存登陆人的信息
         spuCommentEntity.setMemberNickName(loginUser.getNickname());
         spuCommentEntity.setCreateTime(new Date());
         // 设置图片
@@ -88,7 +88,8 @@ public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentDao, SpuComment
         // 获得spuId
         Long spuId = spuInfoEntity.getId();
         // 查出主评论
-        List<SpuCommentEntity> spuCommentEntities = this.baseMapper.selectList(new QueryWrapper<SpuCommentEntity>().eq("spu_id", spuId).eq("comment_type",0));
+        List<SpuCommentEntity> spuCommentEntities = this.baseMapper.selectList(new QueryWrapper<SpuCommentEntity>()
+                .eq("spu_id", spuId).eq("comment_type",0));
         List<CommentVo> commentVoList = spuCommentEntities.stream().map((spuCommentEntity) -> {
             CommentVo commentVo = new CommentVo();
             BeanUtils.copyProperties(spuCommentEntity, commentVo);

@@ -1,10 +1,13 @@
 package com.aining.mall.product.web;
 
 import com.aining.mall.product.entity.SpuCommentEntity;
+import com.aining.mall.product.feign.OrderFeignService;
 import com.aining.mall.product.service.SkuInfoService;
 import com.aining.mall.product.service.SpuCommentService;
+import com.aining.mall.product.service.SpuInfoService;
 import com.aining.mall.product.vo.CommentVo;
 import com.aining.mall.product.vo.voForItem.SkuItemVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

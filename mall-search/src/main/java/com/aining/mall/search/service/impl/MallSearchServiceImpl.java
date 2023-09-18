@@ -392,7 +392,6 @@ public class MallSearchServiceImpl implements MallSearchService {
                     //如果失败
                     navVo.setNavName(s[0]);
                 }
-
                 //2 取消了面包屑以后 我们要跳转到哪个地方 将请求地址的url里面的当前请求参数置空
                 //拿到所有的查询条件 去掉当前
                 String replace = replaceQueryString(param, attr, "attrs");

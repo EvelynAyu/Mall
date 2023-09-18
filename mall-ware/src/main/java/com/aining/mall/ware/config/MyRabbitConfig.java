@@ -51,15 +51,12 @@ public class MyRabbitConfig {
         Queue queue = new Queue("stock.release.stock.queue", true, false, false);
         return queue;
     }
-
-
     /**
      * 延迟队列
      * @return
      */
     @Bean
     public Queue stockDelayQueue() {
-
         HashMap<String, Object> arguments = new HashMap<>();
         arguments.put("x-dead-letter-exchange", "stock-event-exchange");
         arguments.put("x-dead-letter-routing-key", "stock.release");
@@ -69,8 +66,6 @@ public class MyRabbitConfig {
         Queue queue = new Queue("stock.delay.queue", true, false, false,arguments);
         return queue;
     }
-
-
     /**
      * 交换机与普通队列绑定
      * @return
@@ -87,8 +82,6 @@ public class MyRabbitConfig {
 
         return binding;
     }
-
-
     /**
      * 交换机与延迟队列绑定
      * @return

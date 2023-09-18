@@ -125,34 +125,32 @@ public class CartServiceImpl implements CartService {
         CartVo cartVo = new CartVo();
         UserInfoTo userInfoTo = CartInterceptor.toThreadLocal.get();
         if (userInfoTo.getUserId() != null) {
-            //1、登录
+            //1. Shopping cart keys in logged in state
             String cartKey = CART_PREFIX + userInfoTo.getUserId();
-            //临时购物车的键
+            // Temporary Shopping Cart Keys
             String temptCartKey = CART_PREFIX + userInfoTo.getUserKey();
 
-            //2、如果临时购物车的数据还未进行合并
+            //2、If the data in the temporary shopping cart has not yet been merged
             List<CartItemVo> tempCartItems = getCartItems(temptCartKey);
             if (tempCartItems != null) {
-                //临时购物车有数据需要进行合并操作
+                //Temporary shopping cart has data that needs to be merged
                 for (CartItemVo item : tempCartItems) {
                     addToCart(item.getSkuId(),item.getCount());
                 }
-                //清除临时购物车的数据
+                //Clearing temporary shopping cart data
                 clearCartInfo(temptCartKey);
             }
-
-            //3、获取登录后的购物车数据【包含合并过来的临时购物车的数据和登录后购物车的数据】
+            //3、Get the shopping cart data after login
+            // including the data of the merged temporary shopping cart and the data of the logged-in shopping cart
             List<CartItemVo> cartItems = getCartItems(cartKey);
             cartVo.setItems(cartItems);
-
         } else {
-            //没登录
+            //Not logged in.
             String cartKey = CART_PREFIX + userInfoTo.getUserKey();
-            //获取临时购物车里面的所有购物项
+            //Get all the items in the temporary shopping cart
             List<CartItemVo> cartItems = getCartItems(cartKey);
             cartVo.setItems(cartItems);
         }
-
         return cartVo;
     }
 

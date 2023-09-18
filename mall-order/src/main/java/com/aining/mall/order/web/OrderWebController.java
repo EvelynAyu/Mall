@@ -70,12 +70,14 @@ public class OrderWebController {
                     case 2: msg += "订单商品价格发生变化，请确认后再次提交"; break;
                     case 3: msg += "库存锁定失败，商品库存不足"; break;
                 }
+                System.out.println(msg);
                 attributes.addFlashAttribute("msg",msg);
                 return "redirect:http://order.mall.com/toTrade";
             }
         } catch (Exception e) {
             if (e instanceof NoStockException) {
                 String message = ((NoStockException)e).getMessage();
+                System.out.println("message"+ message);
                 attributes.addFlashAttribute("msg",message);
             }
             return "redirect:http://order.mall.com/toTrade";

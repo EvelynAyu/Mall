@@ -19,13 +19,10 @@ import java.io.IOException;
 @RabbitListener(queues = "order.release.order.queue")
 @Service
 public class OrderCloseListener {
-
     @Autowired
     private OrderService orderService;
-
     @RabbitHandler
     public void listener(OrderEntity orderEntity, Channel channel, Message message) throws IOException {
-        System.out.println("收到过期的订单信息，准备关闭订单" + orderEntity.getOrderSn());
         try {
             orderService.closeOrder(orderEntity);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
@@ -33,5 +30,4 @@ public class OrderCloseListener {
             channel.basicReject(message.getMessageProperties().getDeliveryTag(),true);
         }
     }
-
 }

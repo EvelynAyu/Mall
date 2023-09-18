@@ -182,7 +182,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     @Cacheable(value = {"category"},key = "#root.method.name",sync = true)
     @Override
     public List<CategoryEntity> getLevel1Categorys() {
-        List<CategoryEntity> categoryEntities = baseMapper.selectList(new QueryWrapper<CategoryEntity>().eq("parent_cid", 0L));
+        List<CategoryEntity> categoryEntities = baseMapper.selectList(new QueryWrapper<CategoryEntity>()
+                .eq("parent_cid", 0L));
         return categoryEntities;
     }
 
@@ -448,7 +449,4 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         // return this.baseMapper.selectList(
         //         new QueryWrapper<CategoryEntity>().eq("parent_cid", parentCid));
     }
-
-
-
 }

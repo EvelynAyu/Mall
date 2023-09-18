@@ -71,17 +71,15 @@ public class LoginController {
         String redisStorage = codeNum + "_" + System.currentTimeMillis();
         stringRedisTemplate.opsForValue().set(AuthServerConstant.SMS_CODE_CACHE_PREFIX + phone,
                 redisStorage, 10, TimeUnit.MINUTES);
-
-
         thirdPartyFeignService.sendCode(phone, codeNum);
-
         return R.ok();
     }
 
     /**
-     * TODO: 重定向携带数据：利用session原理，将数据放在session中。
-     * TODO: 只要跳转到下一个页面取出这个数据以后，session里面的数据就会删掉
-     * TODO：分布下session问题
+     * 重定向携带数据：利用session原理，将数据放在session中。
+     * 只要跳转到下一个页面取出这个数据以后，session里面的数据就会删掉
+     * 分布下session问题
+     *
      * RedirectAttributes：重定向也可以保留数据，不会丢失
      * 用户注册
      *
@@ -95,14 +93,12 @@ public class LoginController {
         if (result.hasErrors()) {
             Map<String, String> errors = result.getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
             attributes.addFlashAttribute("errors", errors);
-
             //效验出错回到注册页面
             return "redirect:http://auth.mall.com/reg.html";
         }
 
         //1、效验验证码
         String code = vos.getCode();
-
         // 获取存入Redis里的验证码
         String redisCode = stringRedisTemplate.opsForValue().get(AuthServerConstant.SMS_CODE_CACHE_PREFIX + vos.getPhone());
         if (!StringUtils.isEmpty(redisCode)) {
@@ -155,7 +151,7 @@ public class LoginController {
     @PostMapping(value = "/login")
     public String login(UserLoginVo vo, RedirectAttributes attributes, HttpSession session) {
 
-        //远程登录
+        // Remote call
         R login = memberFeignService.login(vo);
 
         if (login.getCode() == 0) {

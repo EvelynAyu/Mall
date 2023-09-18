@@ -1,12 +1,17 @@
 package com.aining.mall.product.service.impl;
 
+import com.aining.common.utils.R;
+import com.aining.common.vo.MemberResponseVo;
 import com.aining.mall.product.entity.SkuImagesEntity;
 import com.aining.mall.product.entity.SpuInfoDescEntity;
+import com.aining.mall.product.feign.OrderFeignService;
 import com.aining.mall.product.service.*;
 import com.aining.mall.product.vo.voForItem.SkuItemSaleAttrVo;
 import com.aining.mall.product.vo.voForItem.SkuItemVo;
 import com.aining.mall.product.vo.voForItem.SpuItemAttrGroupVo;
+import com.alibaba.fastjson.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.session.Session;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -27,6 +32,9 @@ import com.aining.mall.product.entity.SkuInfoEntity;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import static com.aining.common.constant.AuthServerConstant.LOGIN_USER;
 
 
 @Service("skuInfoService")
@@ -46,6 +54,9 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
     @Resource
     private ThreadPoolExecutor executor;
+
+    @Resource
+    private OrderFeignService orderFeignService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -187,5 +198,15 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
         return skuItemVo;
     }
+
+    @Override
+    public boolean isPurchased(Long skuId) {
+        SkuInfoEntity skuInfoEntity = this.getById(skuId);
+        Long spuId = skuInfoEntity.getSpuId();
+        String checkPurchase = orderFeignService.checkPurchase(spuId);
+        boolean buyOrNot = Boolean.parseBoolean(checkPurchase);
+        return buyOrNot;
+    }
+
 
 }

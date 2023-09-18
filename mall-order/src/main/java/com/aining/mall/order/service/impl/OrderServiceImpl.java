@@ -191,7 +191,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
         Long result = redisTemplate.execute(new DefaultRedisScript<>(script, Long.class),
                 Arrays.asList(USER_ORDER_TOKEN_PREFIX + memberResponseVo.getId()),
                 orderToken);
-
         if(result == 0L){
             //令牌验证失败
             submitOrderResponseVo.setCode(1);
@@ -200,20 +199,16 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
             // 校验成功
             //去创建、下订单、验令牌、验价格、锁定库存...
             OrderCreateTo orderCreateTo = createOrder();
-
             // 校验价格
             BigDecimal payAmount = orderCreateTo.getOrder().getPayAmount();
             BigDecimal payPrice = vo.getPayPrice();
-
             //金额对比
             if (Math.abs(payAmount.subtract(payPrice).doubleValue()) < 0.01) {
                 //3、保存订单
                 saveOrder(orderCreateTo);
-
                 // TODO 库存锁定只要有异常，回滚订单数据
                 // 需要的数据订单号、所有订单项信息(skuId,skuNum,skuName)
                 WareSkuLockVo wareSkuLockVo = new WareSkuLockVo();
-
                 // 获取订单编号
                 String orderSn = orderCreateTo.getOrder().getOrderSn();
                 wareSkuLockVo.setOrderSn(orderSn);
@@ -229,8 +224,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                 })).collect(Collectors.toList());
                 wareSkuLockVo.setLocks(orderItemVos);
 
-                //TODO 调用远程锁定库存的方法
-                //出现的问题：扣减库存成功了，但是由于网络原因超时，出现异常，导致订单事务回滚，库存事务不回滚(解决方案：seata)
+                // 调用远程锁定库存的方法
+                // 出现的问题：扣减库存成功了，但是由于网络原因超时，出现异常，导致订单事务回滚，库存事务不回滚(解决方案：seata)
                 // 不推荐使用seata，因为是加锁，串行化，提升不了效率,可以发消息给库存服务
                 // 为了保证高并发，库存服务自己回滚，可以发消息给库存服务
                 // 库存服务也可以使用自动解锁模式：消息队列
@@ -238,12 +233,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                 if(r.getCode() == 0){
                     // 锁库存成功
                     submitOrderResponseVo.setOrder(orderCreateTo.getOrder());
-
                     // 制造异常，测试事务回滚
                     // int i = 10 / 0;
-
-                    /** 订单创建成功，发送消息给MQ */
-                    rabbitTemplate.convertAndSend("order-event-exchange","order.create.order",orderCreateTo.getOrder());
+                    /** Order created successfully, send message to MQ */
+                    rabbitTemplate.convertAndSend("order-event-exchange",
+                                                 "order.create.order",
+                                                 orderCreateTo.getOrder());
                     return submitOrderResponseVo;
                 }else {
                     // 锁库存失败
